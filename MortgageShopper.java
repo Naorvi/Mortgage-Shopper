@@ -2,7 +2,7 @@ import java.awt.*;
 import java.io.IOException;
 import javax.swing.*;
 
-class Main {
+class MortgageShopper {
 
         private static void createAndShowGUI() throws IOException {
                 //Create and set up the window.
