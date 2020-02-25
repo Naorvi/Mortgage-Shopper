@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.io.IOException;
 import javax.swing.*;
+import java.lang.Object;
 
 class MortgageShopper {
 
@@ -20,9 +21,16 @@ class MortgageShopper {
                 Font font1 = new Font("Ariel", Font.BOLD, 20);
                 Font font2 = new Font("Ariel", Font.BOLD, 40);
 
-                JTextField name = new JTextField(20);
+                ImageIcon icon = new ImageIcon("sharkLoansLogo.png");
+                JLabel logo=new JLabel();
+                logo.setIcon(icon);
                 gridbag.gridx=0;
                 gridbag.gridy=0;
+                pane.add(logo,gridbag);
+
+                JTextField name = new JTextField(20);
+                gridbag.gridx=0;
+                gridbag.gridy=1;
                 pane.add(name,gridbag);
                 name.setText("Name");
                 name.setFont(font1);
@@ -31,7 +39,7 @@ class MortgageShopper {
 
                 JTextField principle = new JTextField(20);
                 gridbag.gridx=1;
-                gridbag.gridy=0;
+                gridbag.gridy=1;
                 pane.add(principle,gridbag);
                 principle.setText("Principle");
                 principle.setFont(font1);
@@ -41,7 +49,7 @@ class MortgageShopper {
 
                 JTextField downPayment = new JTextField(20);
                 gridbag.gridx=2;
-                gridbag.gridy=0;
+                gridbag.gridy=1;
                 pane.add(downPayment,gridbag);
                 downPayment.setText("Down Payment");
                 downPayment.setFont(font1);
@@ -51,7 +59,7 @@ class MortgageShopper {
 
                 JButton autoButton = new JButton("Auto");
                 gridbag.gridx=0;
-                gridbag.gridy=2;
+                gridbag.gridy=3;
                 pane.add(autoButton,gridbag);
                 autoButton.setFont(font1);
                 autoButton.setForeground(Color.white);
@@ -61,7 +69,7 @@ class MortgageShopper {
 
                 JRadioButton months36= new JRadioButton("36 Months");
                 gridbag.gridx=0;
-                gridbag.gridy=3;
+                gridbag.gridy=4;
                 pane.add(months36,gridbag);
                 months36.setFont(font1);
                 months36.setForeground(Color.white);
@@ -71,7 +79,7 @@ class MortgageShopper {
 
                 JRadioButton months72= new JRadioButton("72 Months");
                 gridbag.gridx=0;
-                gridbag.gridy=4;
+                gridbag.gridy=5;
                 pane.add(months72,gridbag);
                 months72.setFont(font1);
                 months72.setForeground(Color.white);
@@ -82,7 +90,7 @@ class MortgageShopper {
 
                 JButton homeButton = new JButton("Home");
                 gridbag.gridx=1;
-                gridbag.gridy=2;
+                gridbag.gridy=3;
                 pane.add(homeButton,gridbag);
                 homeButton.setFont(font1);
                 homeButton.setForeground(Color.white);
@@ -92,7 +100,7 @@ class MortgageShopper {
 
                 JRadioButton year15= new JRadioButton("15 Years");
                 gridbag.gridx=1;
-                gridbag.gridy=3;
+                gridbag.gridy=4;
                 pane.add(year15,gridbag);
                 year15.setFont(font1);
                 year15.setForeground(Color.white);
@@ -102,7 +110,7 @@ class MortgageShopper {
 
                 JRadioButton year30= new JRadioButton("30 Years");
                 gridbag.gridx=1;
-                gridbag.gridy=4;
+                gridbag.gridy=5;
                 pane.add(year30,gridbag);
                 year30.setFont(font1);
                 year30.setForeground(Color.white);
@@ -112,7 +120,7 @@ class MortgageShopper {
 
                 JButton businessButton = new JButton("Business");
                 gridbag.gridx=2;
-                gridbag.gridy=2;
+                gridbag.gridy=3;
                 pane.add(businessButton,gridbag);
                 businessButton.setFont(font1);
                 businessButton.setForeground(Color.white);
@@ -123,7 +131,7 @@ class MortgageShopper {
 
                 JRadioButton year3= new JRadioButton("3 Years");
                 gridbag.gridx=2;
-                gridbag.gridy=3;
+                gridbag.gridy=4;
                 pane.add(year3,gridbag);
                 year3.setFont(font1);
                 year3.setForeground(Color.white);
@@ -133,7 +141,7 @@ class MortgageShopper {
 
                 JRadioButton year5= new JRadioButton("5 Years");
                 gridbag.gridx=2;
-                gridbag.gridy=4;
+                gridbag.gridy=5;
                 pane.add(year5,gridbag);
                 year5.setFont(font1);
                 year5.setForeground(Color.white);
@@ -142,7 +150,7 @@ class MortgageShopper {
                 year5.setBorderPainted(false);
 
                 gridbag.gridx=0;
-                gridbag.gridy=5;
+                gridbag.gridy=6;
                 gridbag.gridheight=10;
                 gridbag.fill = GridBagConstraints.VERTICAL;
                 gridbag.gridwidth=8;
@@ -154,6 +162,8 @@ class MortgageShopper {
                 submitButton.setContentAreaFilled(false);
                 //submitButton.setBorderPainted(false);
                 pane.add(submitButton,gridbag);
+
+
 
                 //Display the window.
                 frame.getContentPane().add(pane);
