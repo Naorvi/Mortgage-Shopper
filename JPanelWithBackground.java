@@ -8,6 +8,11 @@ import java.lang.String;
 public class JPanelWithBackground extends JPanel {
     private Image backgroundImage;
 
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(1280, 800);
+    }
+
     public JPanelWithBackground(String fileName) throws IOException {
         backgroundImage = ImageIO.read(new File(fileName));
     }
