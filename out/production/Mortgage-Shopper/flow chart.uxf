@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>780</x>
+      <y>190</y>
+      <w>200</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>user enters name, 
+principle, downpayment, 
+and select credit level</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>260</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>630</x>
+      <y>520</y>
+      <w>240</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>calculate the month payment
+depending on which length selected</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>740</x>
+      <y>320</y>
+      <w>280</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>user clicks on auto,mortgage, business,
+we instantiate the class and pass
+in the variables form before</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>670</x>
+      <y>440</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>1170</x>
+      <y>380</y>
+      <w>240</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Bank Passes in the intrestRate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1010</x>
+      <y>390</y>
+      <w>180</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>440</y>
+      <w>150</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>130.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>900</x>
+      <y>520</y>
+      <w>240</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>calculate the month payment
+depending on which length selected</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
