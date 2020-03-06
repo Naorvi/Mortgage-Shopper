@@ -1,3 +1,2 @@
 language = "java"
-  run = "javac Main.java&& java Main"
-  
+  run = "javac Main.java && java Main"

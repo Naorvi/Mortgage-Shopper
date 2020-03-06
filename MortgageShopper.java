@@ -11,22 +11,25 @@ class MortgageShopper {
                 frame.setIconImage(new ImageIcon("SharkIcon.png").getImage());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                frame.setBounds(0,0,800,600);
+                //frame.setBounds(0,0,800,600);
 
                 JPanelWithBackground pane = new JPanelWithBackground("sharkLoadBG.png");
                 pane.setLayout(new GridBagLayout());
 
                 GridBagConstraints gridbag = new GridBagConstraints();
-                pane.setSize(800,600);
+                //pane.setSize(800,600);
                 Font font1 = new Font("Ariel", Font.BOLD, 20);
                 Font font2 = new Font("Ariel", Font.BOLD, 40);
 
                 ImageIcon icon = new ImageIcon("sharkLoansLogo.png");
                 JLabel logo=new JLabel();
                 logo.setIcon(icon);
+
+                gridbag.ipady=20;
                 gridbag.gridx=0;
                 gridbag.gridy=0;
                 pane.add(logo,gridbag);
+
 
                 JTextField name = new JTextField(20);
                 gridbag.gridx=0;
@@ -151,10 +154,10 @@ class MortgageShopper {
 
                 gridbag.gridx=0;
                 gridbag.gridy=6;
-                gridbag.gridheight=10;
-                gridbag.fill = GridBagConstraints.VERTICAL;
+                //gridbag.weighty=200;
+                //gridbag.ipady=40;
                 gridbag.gridwidth=8;
-                gridbag.fill = GridBagConstraints.HORIZONTAL;
+                gridbag.fill = GridBagConstraints.BOTH;
                 JButton submitButton = new JButton("Submit");
                 submitButton.setFont(font2);
                 submitButton.setForeground(Color.white);
@@ -171,7 +174,8 @@ class MortgageShopper {
                 frame.setVisible(true);
         }
 
-        public static void main(String[] args) throws IOException {
+        public static void main(String[] args) throws Exception {
+                BankSQL.connectToSQL();
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                                 try {
