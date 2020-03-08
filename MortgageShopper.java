@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.*;
-import java.lang.Object;
 
 class MortgageShopper {
 
@@ -13,7 +13,7 @@ class MortgageShopper {
 
                 //frame.setBounds(0,0,800,600);
 
-                JPanelWithBackground pane = new JPanelWithBackground("sharkLoadBG.png");
+                JPanelWithBackground pane = new JPanelWithBackground("images/sharkLoadBG.png");
                 pane.setLayout(new GridBagLayout());
 
                 GridBagConstraints gridbag = new GridBagConstraints();
@@ -21,7 +21,7 @@ class MortgageShopper {
                 Font font1 = new Font("Ariel", Font.BOLD, 20);
                 Font font2 = new Font("Ariel", Font.BOLD, 40);
 
-                ImageIcon icon = new ImageIcon("sharkLoansLogo.png");
+                ImageIcon icon = new ImageIcon("images/sharkLoansLogo.png");
                 JLabel logo=new JLabel();
                 logo.setIcon(icon);
 
@@ -175,7 +175,12 @@ class MortgageShopper {
         }
 
         public static void main(String[] args) throws Exception {
-                javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                BankSQL.readBanksSQL();
+                ArrayList<Banks> banks = new ArrayList<Banks>();
+                banks=BankSQL.getList();
+                        System.out.println(banks);
+
+                SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                                 try {
                                         createAndShowGUI();
