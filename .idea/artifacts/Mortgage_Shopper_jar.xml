@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Mortgage-Shopper:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Mortgage_Shopper_jar</output-path>
+    <root id="archive" name="Mortgage-Shopper.jar">
+      <element id="module-output" name="Mortgage-Shopper" />
+      <element id="library" level="application" name="Mortgage-Shopper" />
+      <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/lib/mysql-connector-java-8.0.19.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

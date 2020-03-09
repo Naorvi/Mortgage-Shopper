@@ -175,10 +175,10 @@ class MortgageShopper {
         }
 
         public static void main(String[] args) {
-                BankSQL.readBanksSQL();
-                ArrayList<Banks> banks;
-                banks=BankSQL.getList();
-                        System.out.println(banks);
+                //BankSQL.readBanksSQL();
+                //ArrayList<Banks> banks;
+                //banks=BankSQL.getList();
+                        //System.out.println(banks);
 
                 SwingUtilities.invokeLater(() -> {
                         try {
