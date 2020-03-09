@@ -8,7 +8,7 @@ class MortgageShopper {
         private static void createAndShowGUI() throws IOException {
                 //Create and set up the window.
                 JFrame frame = new JFrame("Shark Loans");
-                frame.setIconImage(new ImageIcon("SharkIcon.png").getImage());
+                frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 //frame.setBounds(0,0,800,600);
@@ -26,7 +26,7 @@ class MortgageShopper {
                 logo.setIcon(icon);
 
                 gridbag.ipady=20;
-                gridbag.gridx=0;
+                gridbag.gridx=2;
                 gridbag.gridy=0;
                 pane.add(logo,gridbag);
 
@@ -174,19 +174,17 @@ class MortgageShopper {
                 frame.setVisible(true);
         }
 
-        public static void main(String[] args) throws Exception {
+        public static void main(String[] args) {
                 BankSQL.readBanksSQL();
-                ArrayList<Banks> banks = new ArrayList<Banks>();
+                ArrayList<Banks> banks;
                 banks=BankSQL.getList();
                         System.out.println(banks);
 
-                SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                                try {
-                                        createAndShowGUI();
-                                } catch (IOException e) {
-                                        e.printStackTrace();
-                                }
+                SwingUtilities.invokeLater(() -> {
+                        try {
+                                createAndShowGUI();
+                        } catch (IOException e) {
+                                e.printStackTrace();
                         }
                 });
         }
