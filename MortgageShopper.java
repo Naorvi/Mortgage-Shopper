@@ -174,18 +174,13 @@ class MortgageShopper {
                 frame.setVisible(true);
         }
 
-        public static void main(String[] args) {
+        public static void main(String[] args) throws IOException {
                 //BankSQL.readBanksSQL();
                 //ArrayList<Banks> banks;
                 //banks=BankSQL.getList();
                         //System.out.println(banks);
-
-                SwingUtilities.invokeLater(() -> {
-                        try {
                                 createAndShowGUI();
-                        } catch (IOException e) {
-                                e.printStackTrace();
-                        }
-                });
+
+
         }
 }
