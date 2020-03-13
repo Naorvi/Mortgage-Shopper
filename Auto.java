@@ -1,20 +1,21 @@
 package mortgageShopper;
 
-public class Auto extends Loan {
+public class Auto extends mortgageShopper.Loan {
 	private double length;
 	private String bankName;
-	private double interestRate;
 
 	// default constructor
-	Auto() {
+	public Auto() {
 		length = 0.0;
 		bankName = "Bank1 ";
 	}
 
 	// parameter constructor
-	Auto(double lngth) {
+	public Auto(double lngth, double prin, double down, double intrest) {
 		length = lngth;
-
+		super.setPrinciple(prin);
+		super.setDownPayment(down);
+		super.setInterestRate(intrest);
 	}
 
 	// setter methods
@@ -23,7 +24,7 @@ public class Auto extends Loan {
 	}
 
 	public void setInterestRate(double i) {
-		interestRate = i;
+		super.setInterestRate(i);
 	}
 
 	public void setBankName(String n) {
@@ -36,7 +37,7 @@ public class Auto extends Loan {
 	}
 
 	public double getInterestRate() {
-		return interestRate;
+		return super.getInterestRate();
 	}
 
 	public String getBankName() {
@@ -46,13 +47,13 @@ public class Auto extends Loan {
 	// override calculateMonthy method
 	public double calculateMonthly() {
 
-		return ((getPrinciple() - getDownPayment()) / (length)) * (1 + getInterestRate());
+		return (((super.getPrinciple()-super.getDownPayment())*(super.getInterestRate()/100))+(super.getPrinciple()-super.getDownPayment()))/length;
 
 	}
 
 	// override toString() method
 	public String toString() {
-		return "Bank Name: " + bankName + "\nLoan Length: " + length + "\nInterest Rate: " + interestRate;
+		return "Bank Name: " + bankName + "\nLoan Length: " + length + "\nInterest Rate: " + super.getInterestRate();
 
 	}
 }

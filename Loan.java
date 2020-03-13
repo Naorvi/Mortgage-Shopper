@@ -37,6 +37,8 @@ public abstract class Loan {
 		downPayment = d;
 	}
 
+	public void setInterestRate(double i){interestRate=i;}
+
 	// getter methods
 	public double getPrinciple() {
 		return principle;
@@ -46,8 +48,10 @@ public abstract class Loan {
 		return downPayment;
 	}
 
+	public double getInterestRate(){return interestRate;}
+
 	// abstract methods
-	public abstract double calculateMonthy();
+	public abstract double calculateMonthly();
 
 	// toString method
 	public String toString() {
