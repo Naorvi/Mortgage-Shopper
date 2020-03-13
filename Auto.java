@@ -11,7 +11,8 @@ public class Auto extends mortgageShopper.Loan {
 	}
 
 	// parameter constructor
-	public Auto(double lngth, double prin, double down, double intrest) {
+	public Auto(String nam, double lngth, double prin, double down, double intrest) {
+		bankName=nam;
 		length = lngth;
 		super.setPrinciple(prin);
 		super.setDownPayment(down);
@@ -53,7 +54,16 @@ public class Auto extends mortgageShopper.Loan {
 
 	// override toString() method
 	public String toString() {
-		return "Bank Name: " + bankName + "\nLoan Length: " + length + "\nInterest Rate: " + super.getInterestRate();
+		return "Bank Name: "
+				+ bankName
+				+"\nPrinciple "
+				+ super.getPrinciple()
+				+"\nDown Payment "
+				+ super.getDownPayment()
+				+ "\nLoan Length: "
+				+ length
+				+ "\nInterest Rate: "
+				+ super.getInterestRate();
 
 	}
 }

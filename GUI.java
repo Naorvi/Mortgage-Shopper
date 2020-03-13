@@ -3,7 +3,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GUI {
-    private static void createAndShowGUI() throws IOException {
+    public static void createAndShowGUI() throws IOException {
         //Create and set up the window.
         JFrame frame = new JFrame("Shark Loans");
         frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
