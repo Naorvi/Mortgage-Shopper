@@ -1,17 +1,17 @@
 package mortgageShopper;
 
 public class Auto extends mortgageShopper.Loan {
-	private double length;
+	private int length;
 	private String bankName;
 
 	// default constructor
 	public Auto() {
-		length = 0.0;
+		length = 0;
 		bankName = "Bank1 ";
 	}
 
 	// parameter constructor
-	public Auto(String nam, double lngth, double prin, double down, double intrest) {
+	public Auto(String nam, int lngth, double prin, double down, double intrest) {
 		bankName=nam;
 		length = lngth;
 		super.setPrinciple(prin);
@@ -20,7 +20,7 @@ public class Auto extends mortgageShopper.Loan {
 	}
 
 	// setter methods
-	public void setLength(double l) {
+	public void setLength(int l) {
 		length = l;
 	}
 
@@ -33,7 +33,7 @@ public class Auto extends mortgageShopper.Loan {
 	}
 
 	// getter methods
-	public double getlength() {
+	public int getlength() {
 		return length;
 	}
 

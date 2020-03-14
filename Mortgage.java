@@ -1,17 +1,17 @@
 package mortgageShopper;
 
 public class Mortgage extends mortgageShopper.Loan {
-	private double length;
+	private int length;
 	private String bankName;
 
 	// default constructor
-	Mortgage() {
-		length = 0.0;
+    public Mortgage() {
+		length = 0;
 		bankName = "Bank1 ";
 	}
 
 	// parameter constructor
-	public Mortgage(String nam, double lngth, double prin, double down, double intrest) {
+	public Mortgage(String nam, int lngth, double prin, double down, double intrest) {
 		bankName=nam;
 		length = lngth;
 		super.setPrinciple(prin);
@@ -20,7 +20,7 @@ public class Mortgage extends mortgageShopper.Loan {
 	}
 
 	// setter methods
-	public void setLength(double l) {
+	public void setLength(int l) {
 		length = l;
 	}
 
@@ -33,7 +33,7 @@ public class Mortgage extends mortgageShopper.Loan {
 	}
 
 	// getter methods
-	public double getlength() {
+	public int getlength() {
 		return length;
 	}
 
@@ -54,7 +54,16 @@ public class Mortgage extends mortgageShopper.Loan {
 
 	// override toString() method
 	public String toString() {
-		return "Bank Name: " + bankName + "\nLoan Length: " + length + "\nInterest Rate: " + super.getInterestRate();
+		return "Bank Name: "
+				+ bankName
+				+"\nPrinciple "
+				+ super.getPrinciple()
+				+"\nDown Payment "
+				+ super.getDownPayment()
+				+ "\nLoan Length: "
+				+ length
+				+ "\nInterest Rate: "
+				+ super.getInterestRate();
 
 	}
 }
