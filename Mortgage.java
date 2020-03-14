@@ -1,9 +1,8 @@
 package mortgageShopper;
 
-public class Mortgage extends Loan {
+public class Mortgage extends mortgageShopper.Loan {
 	private double length;
 	private String bankName;
-	private double interestRate;
 
 	// default constructor
 	Mortgage() {
@@ -12,9 +11,12 @@ public class Mortgage extends Loan {
 	}
 
 	// parameter constructor
-	Mortgage(double lngth) {
+	public Mortgage(String nam, double lngth, double prin, double down, double intrest) {
+		bankName=nam;
 		length = lngth;
-
+		super.setPrinciple(prin);
+		super.setDownPayment(down);
+		super.setInterestRate(intrest);
 	}
 
 	// setter methods
@@ -23,7 +25,7 @@ public class Mortgage extends Loan {
 	}
 
 	public void setInterestRate(double i) {
-		interestRate = i;
+		super.setInterestRate(i);
 	}
 
 	public void setBankName(String n) {
@@ -36,7 +38,7 @@ public class Mortgage extends Loan {
 	}
 
 	public double getInterestRate() {
-		return interestRate;
+		return super.getInterestRate();
 	}
 
 	public String getBankName() {
@@ -46,13 +48,13 @@ public class Mortgage extends Loan {
 	// override calculateMonthy method
 	public double calculateMonthly() {
 
-		return ((getPrinciple() - getDownPayment()) / (length)) * (1 + getInterestRate());
+		return (((super.getPrinciple()-super.getDownPayment())*(super.getInterestRate()/100))+(super.getPrinciple()-super.getDownPayment()))/length;
 
 	}
 
 	// override toString() method
 	public String toString() {
-		return "Bank Name: " + bankName + "\nLoan Length: " + length + "\nInterest Rate: " + interestRate;
+		return "Bank Name: " + bankName + "\nLoan Length: " + length + "\nInterest Rate: " + super.getInterestRate();
 
 	}
 }
