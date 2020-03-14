@@ -38,7 +38,6 @@ class MortgageShopper {
                 System.out.println(m2+"\nthis is the monthly payment "+monthm2+"\n");
 
 
-
                 Mortgage m=new Mortgage("Feez",500,500000,20000,5.0);
                 double monthm=m.calculateMonthly();
                 System.out.println(m+"\nthis is the monthly payment "+monthm+"\n");
