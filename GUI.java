@@ -3,6 +3,23 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GUI {
+    static JTextField name = new JTextField(20);
+    static JTextField principle = new JTextField(20);
+    static JTextField downPayment = new JTextField(20);
+    static JButton autoButton = new JButton("Auto");
+    static JRadioButton months36= new JRadioButton("36 Months");
+    static JRadioButton months72= new JRadioButton("72 Months");
+    static JButton homeButton = new JButton("Home");
+    static JRadioButton year15= new JRadioButton("15 Years");
+    static JRadioButton year30= new JRadioButton("30 Years");
+    static JButton businessButton = new JButton("Business");
+    static JRadioButton year3= new JRadioButton("3 Years");
+    static JRadioButton year5= new JRadioButton("5 Years");
+    static JButton submitButton = new JButton("Submit");
+    static ButtonGroup autoButtons=new ButtonGroup();
+    static ButtonGroup homeButtons=new ButtonGroup();
+    static ButtonGroup businessButtons=new ButtonGroup();
+
     public static void createAndShowGUI() throws IOException {
         //Create and set up the window.
         JFrame frame = new JFrame("Shark Loans");
@@ -29,7 +46,6 @@ public class GUI {
         pane.add(logo,gridbag);
 
 
-        JTextField name = new JTextField(20);
         gridbag.gridx=0;
         gridbag.gridy=1;
         pane.add(name,gridbag);
@@ -38,7 +54,7 @@ public class GUI {
         name.setForeground(Color.white);
         name.setOpaque(false);
 
-        JTextField principle = new JTextField(20);
+
         gridbag.gridx=1;
         gridbag.gridy=1;
         pane.add(principle,gridbag);
@@ -48,7 +64,7 @@ public class GUI {
         principle.setOpaque(false);
 
 
-        JTextField downPayment = new JTextField(20);
+
         gridbag.gridx=2;
         gridbag.gridy=1;
         pane.add(downPayment,gridbag);
@@ -58,7 +74,7 @@ public class GUI {
         downPayment.setOpaque(false);
 
 
-        JButton autoButton = new JButton("Auto");
+
         gridbag.gridx=0;
         gridbag.gridy=3;
         pane.add(autoButton,gridbag);
@@ -68,7 +84,8 @@ public class GUI {
         autoButton.setContentAreaFilled(false);
         autoButton.setBorderPainted(false);
 
-        JRadioButton months36= new JRadioButton("36 Months");
+
+
         gridbag.gridx=0;
         gridbag.gridy=4;
         pane.add(months36,gridbag);
@@ -78,7 +95,7 @@ public class GUI {
         months36.setContentAreaFilled(false);
         months36.setBorderPainted(false);
 
-        JRadioButton months72= new JRadioButton("72 Months");
+
         gridbag.gridx=0;
         gridbag.gridy=5;
         pane.add(months72,gridbag);
@@ -89,7 +106,9 @@ public class GUI {
         months72.setBorderPainted(false);
 
 
-        JButton homeButton = new JButton("Home");
+        autoButtons.add(months36);
+        autoButtons.add(months72);
+
         gridbag.gridx=1;
         gridbag.gridy=3;
         pane.add(homeButton,gridbag);
@@ -99,7 +118,7 @@ public class GUI {
         homeButton.setContentAreaFilled(false);
         homeButton.setBorderPainted(false);
 
-        JRadioButton year15= new JRadioButton("15 Years");
+
         gridbag.gridx=1;
         gridbag.gridy=4;
         pane.add(year15,gridbag);
@@ -109,7 +128,6 @@ public class GUI {
         year15.setContentAreaFilled(false);
         year15.setBorderPainted(false);
 
-        JRadioButton year30= new JRadioButton("30 Years");
         gridbag.gridx=1;
         gridbag.gridy=5;
         pane.add(year30,gridbag);
@@ -119,7 +137,10 @@ public class GUI {
         year30.setContentAreaFilled(false);
         year30.setBorderPainted(false);
 
-        JButton businessButton = new JButton("Business");
+
+        homeButtons.add(year15);
+        homeButtons.add(year30);
+
         gridbag.gridx=2;
         gridbag.gridy=3;
         pane.add(businessButton,gridbag);
@@ -130,7 +151,7 @@ public class GUI {
         businessButton.setBorderPainted(false);
 
 
-        JRadioButton year3= new JRadioButton("3 Years");
+
         gridbag.gridx=2;
         gridbag.gridy=4;
         pane.add(year3,gridbag);
@@ -140,7 +161,7 @@ public class GUI {
         year3.setContentAreaFilled(false);
         year3.setBorderPainted(false);
 
-        JRadioButton year5= new JRadioButton("5 Years");
+
         gridbag.gridx=2;
         gridbag.gridy=5;
         pane.add(year5,gridbag);
@@ -150,13 +171,17 @@ public class GUI {
         year5.setContentAreaFilled(false);
         year5.setBorderPainted(false);
 
+
+        businessButtons.add(year5);
+        businessButtons.add(year3);
+
         gridbag.gridx=0;
         gridbag.gridy=6;
         //gridbag.weighty=200;
         //gridbag.ipady=40;
         gridbag.gridwidth=8;
         gridbag.fill = GridBagConstraints.BOTH;
-        JButton submitButton = new JButton("Submit");
+
         submitButton.setFont(font2);
         submitButton.setForeground(Color.white);
         submitButton.setOpaque(false);
@@ -165,10 +190,67 @@ public class GUI {
         pane.add(submitButton,gridbag);
 
 
-
         //Display the window.
         frame.getContentPane().add(pane);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public static JButton getAutoButton() {
+        return autoButton;
+    }
+
+    public static ButtonGroup getAutoButtons(){return autoButtons;}
+
+    public static ButtonGroup getHomeButtons(){return homeButtons;}
+
+    public static ButtonGroup getBusinessButtons(){return businessButtons;}
+
+    public static JButton getBusinessButton() {
+        return businessButton;
+    }
+
+    public static JButton getHomeButton() {
+        return homeButton;
+    }
+
+    public static JButton getSubmitButton() {
+        return submitButton;
+    }
+
+    public static JRadioButton getMonths36() {
+        return months36;
+    }
+
+    public static JRadioButton getMonths72() {
+        return months72;
+    }
+
+    public static JRadioButton getYear3() {
+        return year3;
+    }
+
+    public static JRadioButton getYear5() {
+        return year5;
+    }
+
+    public static JRadioButton getYear15() {
+        return year15;
+    }
+
+    public static JRadioButton getYear30() {
+        return year30;
+    }
+
+    public static JTextField getDownPayment() {
+        return downPayment;
+    }
+
+    public static JTextField getName() {
+        return name;
+    }
+
+    public static JTextField getPrinciple() {
+        return principle;
     }
 }
