@@ -11,7 +11,7 @@ import javax.swing.*;
 class MortgageShopper {
 
         public static void main(String[] args) throws IOException {
-                Scanner in=new Scanner(System.in);
+                /*Scanner in=new Scanner(System.in);
                 Mortgage m2=new Mortgage();
 
                 System.out.println("Please enter the name of the bank:");
@@ -48,10 +48,10 @@ class MortgageShopper {
 
                 Auto a=new Auto("Lo Yield",3,100,10,4.4);
                 double month=a.calculateMonthly();
-                System.out.println(a+"\nthis is the monthly payment "+month+"\n");
+                System.out.println(a+"\nthis is the monthly payment "+month+"\n");*/
 
-                /*GUI.createAndShowGUI();
+                GUI.createAndShowGUI();
                 Controller c=new Controller();
-                c.initialGUI();*/
+                c.initialGUI();
         }
 }

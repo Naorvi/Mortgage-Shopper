@@ -53,6 +53,7 @@ public class GUI {
         name.setFont(font1);
         name.setForeground(Color.white);
         name.setOpaque(false);
+        name.setMinimumSize(new Dimension(200, 10));
 
 
         gridbag.gridx=1;
@@ -62,6 +63,7 @@ public class GUI {
         principle.setFont(font1);
         principle.setForeground(Color.white);
         principle.setOpaque(false);
+        principle.setMinimumSize(new Dimension(200, 10));
 
 
 
@@ -72,6 +74,7 @@ public class GUI {
         downPayment.setFont(font1);
         downPayment.setForeground(Color.white);
         downPayment.setOpaque(false);
+        downPayment.setMinimumSize(new Dimension(200, 10));
 
 
 

@@ -5,7 +5,6 @@ import mortgageShopper.Mortgage;
 public class Controller {
     private int loanType=0;
     private int length=0;
-    GUI g=new GUI();
 
     Controller(){
 
@@ -79,31 +78,37 @@ public class Controller {
            if(loanType==1){
                if (length==36) {
                    Auto a = new Auto("Auto 36", 36, getPrinciple(), getDown(), 5.0);
-                   System.out.println(a);
+                   double month=a.calculateMonthly();
+                   System.out.println(a+"\nthis is the monthly payment "+month+"\n");
                }
                if(length==72){
                    Auto a = new Auto("Auto 72", 72, getPrinciple(), getDown(), 5.0);
-                   System.out.println(a);
+                   double month=a.calculateMonthly();
+                   System.out.println(a+"\nthis is the monthly payment "+month+"\n");
                }
            }
             if(loanType == 2){
                 if (length==180) {
                     Mortgage m = new Mortgage("Home 15 year", 180, getPrinciple(), getDown(), 5.0);
-                    System.out.println(m);
+                    double month=m.calculateMonthly();
+                    System.out.println(m+"\nthis is the monthly payment "+month+"\n");
                 }
                 if(length==360){
                     Mortgage m = new Mortgage("Home 30 year", 360, getPrinciple(), getDown(), 5.0);
-                    System.out.println(m);
+                    double month=m.calculateMonthly();
+                    System.out.println(m+"\nthis is the monthly payment "+month+"\n");
                 }
             }
             if(loanType == 3){
                 if (length==60) {
-                    Business b = new Business("Business 3 year", 60, getPrinciple(), getDown(), 5.0);
-                    System.out.println(b);
+                    Business b = new Business("Business 5 year", 60, getPrinciple(), getDown(), 5.0);
+                    double month=b.calculateMonthly();
+                    System.out.println(b+"\nthis is the monthly payment "+month+"\n");
                 }
                 if(length==36){
-                    Business b = new Business("Business 5 year", 36, getPrinciple(), getDown(), 5.0);
-                    System.out.println(b);
+                    Business b = new Business("Business 3 year", 36, getPrinciple(), getDown(), 5.0);
+                    double month=b.calculateMonthly();
+                    System.out.println(b+"\nthis is the monthly payment "+month+"\n");
                 }
             }
         });
