@@ -56,14 +56,14 @@ public class Business extends mortgageShopper.Loan {
 	public String toString() {
 		return "Bank Name: "
 				+ bankName
-				+"\nPrinciple "
+				+"\nPrinciple: $"
 				+ super.getPrinciple()
-				+"\nDown Payment "
+				+"\nDown Payment: $"
 				+ super.getDownPayment()
 				+ "\nLoan Length: "
-				+ length
+				+ length + " Months"
 				+ "\nInterest Rate: "
-				+ super.getInterestRate();
+				+ super.getInterestRate() + "%"; 
 
 	}
 }
