@@ -1,3 +1,5 @@
+package mortgageShopper;
+
 import mortgageShopper.Auto;
 import mortgageShopper.Business;
 import mortgageShopper.Mortgage;
@@ -18,7 +20,7 @@ class MortgageShopper {
                 String userBank=in.nextLine();
                 m2.setBankName(userBank);
 
-                System.out.println("Please enter a length in months:");
+                System.out.println("Please enter a loan length in months:");
                 int userLength=Integer.parseInt(in.nextLine());
                 m2.setLength(userLength);
 
@@ -30,25 +32,33 @@ class MortgageShopper {
                 double userPrinciple=Double.parseDouble(in.nextLine());
                 m2.setPrinciple(userPrinciple);
 
-                System.out.println("Please enter the down payment:");
+                System.out.println("Please enter the down payment amount:");
                 double userDown=Double.parseDouble(in.nextLine());
                 m2.setDownPayment(userDown);
 
                 double monthm2=m2.calculateMonthly();
-                System.out.println(m2+"\nthis is the monthly payment "+monthm2+"\n");
-
+                System.out.println("\n");
+                System.out.println(m2);
+                System.out.printf("This is the monthly payment: $%,.2f", (monthm2));
+                System.out.println("\n");
 
                 Mortgage m=new Mortgage("Feez",500,500000,20000,5.0);
                 double monthm=m.calculateMonthly();
-                System.out.println(m+"\nthis is the monthly payment "+monthm+"\n");
+                System.out.println(m);
+                System.out.printf("This is the monthly payment: $%,.2f", (monthm));
+                System.out.println("\n");
 
                 Business b=new Business("Debt",52,500000,20000,5.0);
                 double monthb=b.calculateMonthly();
-                System.out.println(b+"\nthis is the monthly payment "+monthb+"\n");
+                System.out.println(b);
+                System.out.printf("This is the monthly payment: $%,.2f", (monthb));
+                System.out.println("\n");
 
                 Auto a=new Auto("Lo Yield",3,100,10,4.4);
                 double month=a.calculateMonthly();
-                System.out.println(a+"\nthis is the monthly payment "+month+"\n");
+                System.out.println(a);
+                System.out.printf("This is the monthly payment: $%,.2f", (month));
+                System.out.println("\n");
 
                 /*GUI.createAndShowGUI();
                 Controller c=new Controller();
