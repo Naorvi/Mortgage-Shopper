@@ -20,7 +20,7 @@ class MortgageShopper {
                 String userBank=in.nextLine();
                 m2.setBankName(userBank);
 
-                System.out.println("Please enter a loan length in months:");
+                System.out.println("Please enter the loan length in months:");
                 int userLength=Integer.parseInt(in.nextLine());
                 m2.setLength(userLength);
 
@@ -38,24 +38,28 @@ class MortgageShopper {
 
                 double monthm2=m2.calculateMonthly();
                 System.out.println("\n");
+                System.out.println("Mortgage terms:");
                 System.out.println(m2);
                 System.out.printf("This is the monthly payment: $%,.2f", (monthm2));
                 System.out.println("\n");
 
-                Mortgage m=new Mortgage("Feez",500,500000,20000,5.0);
+                Mortgage m=new Mortgage("BB&T",userLength,userPrinciple,userDown,5.8);
                 double monthm=m.calculateMonthly();
+                System.out.println("Additional Mortgage offer:");
                 System.out.println(m);
                 System.out.printf("This is the monthly payment: $%,.2f", (monthm));
                 System.out.println("\n");
 
-                Business b=new Business("Debt",52,500000,20000,5.0);
+                Business b=new Business("Chase",userLength,userPrinciple,userDown,7.8);
                 double monthb=b.calculateMonthly();
+                System.out.println("Business loan terms:");
                 System.out.println(b);
                 System.out.printf("This is the monthly payment: $%,.2f", (monthb));
                 System.out.println("\n");
 
-                Auto a=new Auto("Lo Yield",3,100,10,4.4);
+                Auto a=new Auto("US Bank",userLength,userPrinciple,userDown,5.0);
                 double month=a.calculateMonthly();
+                System.out.println("Auto loan terms:");
                 System.out.println(a);
                 System.out.printf("This is the monthly payment: $%,.2f", (month));
                 System.out.println("\n");
