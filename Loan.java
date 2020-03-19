@@ -55,8 +55,17 @@ public abstract class Loan {
 
 	// toString method
 	public String toString() {
-		return "Monthly Payment: " + monthlyPayment + "\nPriciple: " + principle + "\nDown Payment: " + downPayment
-				+ "\nCredit Score: " + creditScore + "\nBank Name: " + bankName;
+		return "Monthly Payment: $" 
+				+ monthlyPayment 
+				+ "\nPriciple: $" 
+				+ principle 
+				+ "\nDown Payment: $" 
+				+ downPayment
+				+ "\nCredit Score: " 
+				+ creditScore 
+				+ "\nBank Name: " 
+				+ bankName;
+		
 
 	}
 }
