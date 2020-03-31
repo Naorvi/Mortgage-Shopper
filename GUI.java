@@ -40,10 +40,12 @@ public class GUI {
         JLabel logo=new JLabel();
         logo.setIcon(icon);
 
+        gridbag.gridwidth=3;
         gridbag.ipady=20;
-        gridbag.gridx=2;
+        gridbag.gridx=0;
         gridbag.gridy=0;
         pane.add(logo,gridbag);
+        gridbag.gridwidth=1;
 
 
         gridbag.gridx=0;
