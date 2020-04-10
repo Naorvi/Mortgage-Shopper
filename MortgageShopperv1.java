@@ -50,8 +50,8 @@ class MortgageShopperv1 {
                 double month=a.calculateMonthly();
                 System.out.println(a+"\nthis is the monthly payment "+month+"\n");*/
 
-        GUI.createAndShowGUI();
-        Controller c=new Controller();
+        GUI g =new GUI();
+        Controller c=new Controller(g);
         c.initialGUI();
     }
 }

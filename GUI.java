@@ -3,36 +3,36 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GUI {
-    static JTextField name = new JTextField(20);
-    static JTextField principle = new JTextField(20);
-    static JTextField downPayment = new JTextField(20);
-    static JButton autoButton = new JButton("Auto");
-    static JRadioButton months36= new JRadioButton("36 Months");
-    static JRadioButton months72= new JRadioButton("72 Months");
-    static JButton homeButton = new JButton("Home");
-    static JRadioButton year15= new JRadioButton("15 Years");
-    static JRadioButton year30= new JRadioButton("30 Years");
-    static JButton businessButton = new JButton("Business");
-    static JRadioButton year3= new JRadioButton("3 Years");
-    static JRadioButton year5= new JRadioButton("5 Years");
-    static JButton submitButton = new JButton("Submit");
-    static ButtonGroup autoButtons=new ButtonGroup();
-    static ButtonGroup homeButtons=new ButtonGroup();
-    static ButtonGroup businessButtons=new ButtonGroup();
+    private JPanel cards;
+    private JTextField name = new JTextField(20);
+    private JTextField principle = new JTextField(20);
+    private JTextField downPayment = new JTextField(20);
+    private ClearJButton autoButton = new ClearJButton("Auto");
+    private ClearJRadioButton months36= new ClearJRadioButton("36 Months");
+    private ClearJRadioButton months72= new ClearJRadioButton("72 Months");
+    private ClearJButton homeButton = new ClearJButton("Home");
+    private ClearJRadioButton year15= new ClearJRadioButton("15 Years");
+    private ClearJRadioButton year30= new ClearJRadioButton("30 Years");
+    private ClearJButton businessButton = new ClearJButton("Business");
+    private ClearJRadioButton year3= new ClearJRadioButton("3 Years");
+    private ClearJRadioButton year5= new ClearJRadioButton("5 Years");
+    private JButton submitButton = new JButton("Submit");
+    private ButtonGroup autoButtons=new ButtonGroup();
+    private ButtonGroup homeButtons=new ButtonGroup();
+    private ButtonGroup businessButtons=new ButtonGroup();
+    private JButton backToMain =new JButton("Back");
+    private JLabel results=new JLabel("results");
 
-    public static void createAndShowGUI() throws IOException {
+    public void createAndShowGUI() throws IOException {
         //Create and set up the window.
         JFrame frame = new JFrame("Shark Loans");
         frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //frame.setBounds(0,0,800,600);
-
         JPanelWithBackground pane = new JPanelWithBackground("images/sharkLoadBG.png");
         pane.setLayout(new GridBagLayout());
 
-        GridBagConstraints gridbag = new GridBagConstraints();
-        //pane.setSize(800,600);
+        GridBagConstraints gb = new GridBagConstraints();
         Font font1 = new Font("Ariel", Font.BOLD, 20);
         Font font2 = new Font("Ariel", Font.BOLD, 40);
 
@@ -40,222 +40,193 @@ public class GUI {
         JLabel logo=new JLabel();
         logo.setIcon(icon);
 
-        gridbag.gridwidth=3;
-        gridbag.ipady=20;
-        gridbag.gridx=0;
-        gridbag.gridy=0;
-        pane.add(logo,gridbag);
-        gridbag.gridwidth=1;
+        gb.gridwidth=3;
+        gb.ipady=20;
+        gb.gridx=0;
+        gb.gridy=0;
+        pane.add(logo,gb);
+        gb.gridwidth=1;
 
-
-        gridbag.gridx=0;
-        gridbag.gridy=1;
-        pane.add(name,gridbag);
+        gb.gridx=0;
+        gb.gridy=1;
+        pane.add(name,gb);
         name.setText("Name");
         name.setFont(font1);
         name.setForeground(Color.white);
         name.setOpaque(false);
         name.setMinimumSize(new Dimension(200, 10));
 
-
-        gridbag.gridx=1;
-        gridbag.gridy=1;
-        pane.add(principle,gridbag);
+        gb.gridx=1;
+        gb.gridy=1;
+        pane.add(principle,gb);
         principle.setText("Principle");
         principle.setFont(font1);
         principle.setForeground(Color.white);
         principle.setOpaque(false);
         principle.setMinimumSize(new Dimension(200, 10));
 
-
-
-        gridbag.gridx=2;
-        gridbag.gridy=1;
-        pane.add(downPayment,gridbag);
+        gb.gridx=2;
+        gb.gridy=1;
+        pane.add(downPayment,gb);
         downPayment.setText("Down Payment");
         downPayment.setFont(font1);
         downPayment.setForeground(Color.white);
         downPayment.setOpaque(false);
         downPayment.setMinimumSize(new Dimension(200, 10));
 
-
-
-        gridbag.gridx=0;
-        gridbag.gridy=3;
-        pane.add(autoButton,gridbag);
+        gb.gridx=0;
+        gb.gridy=3;
+        pane.add(autoButton,gb);
         autoButton.setFont(font1);
-        autoButton.setForeground(Color.white);
-        autoButton.setOpaque(false);
-        autoButton.setContentAreaFilled(false);
-        autoButton.setBorderPainted(false);
 
+        gb.gridx=0;
+        gb.gridy=4;
+        pane.add(months36,gb);
 
-
-        gridbag.gridx=0;
-        gridbag.gridy=4;
-        pane.add(months36,gridbag);
-        months36.setFont(font1);
-        months36.setForeground(Color.white);
-        months36.setOpaque(false);
-        months36.setContentAreaFilled(false);
-        months36.setBorderPainted(false);
-
-
-        gridbag.gridx=0;
-        gridbag.gridy=5;
-        pane.add(months72,gridbag);
-        months72.setFont(font1);
-        months72.setForeground(Color.white);
-        months72.setOpaque(false);
-        months72.setContentAreaFilled(false);
-        months72.setBorderPainted(false);
-
+        gb.gridx=0;
+        gb.gridy=5;
+        pane.add(months72,gb);
 
         autoButtons.add(months36);
         autoButtons.add(months72);
 
-        gridbag.gridx=1;
-        gridbag.gridy=3;
-        pane.add(homeButton,gridbag);
+        gb.gridx=1;
+        gb.gridy=3;
+        pane.add(homeButton,gb);
         homeButton.setFont(font1);
-        homeButton.setForeground(Color.white);
-        homeButton.setOpaque(false);
-        homeButton.setContentAreaFilled(false);
-        homeButton.setBorderPainted(false);
 
+        gb.gridx=1;
+        gb.gridy=4;
+        pane.add(year15,gb);
 
-        gridbag.gridx=1;
-        gridbag.gridy=4;
-        pane.add(year15,gridbag);
-        year15.setFont(font1);
-        year15.setForeground(Color.white);
-        year15.setOpaque(false);
-        year15.setContentAreaFilled(false);
-        year15.setBorderPainted(false);
-
-        gridbag.gridx=1;
-        gridbag.gridy=5;
-        pane.add(year30,gridbag);
-        year30.setFont(font1);
-        year30.setForeground(Color.white);
-        year30.setOpaque(false);
-        year30.setContentAreaFilled(false);
-        year30.setBorderPainted(false);
-
+        gb.gridx=1;
+        gb.gridy=5;
+        pane.add(year30,gb);
 
         homeButtons.add(year15);
         homeButtons.add(year30);
 
-        gridbag.gridx=2;
-        gridbag.gridy=3;
-        pane.add(businessButton,gridbag);
+        gb.gridx=2;
+        gb.gridy=3;
+        pane.add(businessButton,gb);
         businessButton.setFont(font1);
-        businessButton.setForeground(Color.white);
-        businessButton.setOpaque(false);
-        businessButton.setContentAreaFilled(false);
-        businessButton.setBorderPainted(false);
 
+        gb.gridx=2;
+        gb.gridy=4;
+        pane.add(year3,gb);
 
-
-        gridbag.gridx=2;
-        gridbag.gridy=4;
-        pane.add(year3,gridbag);
-        year3.setFont(font1);
-        year3.setForeground(Color.white);
-        year3.setOpaque(false);
-        year3.setContentAreaFilled(false);
-        year3.setBorderPainted(false);
-
-
-        gridbag.gridx=2;
-        gridbag.gridy=5;
-        pane.add(year5,gridbag);
-        year5.setFont(font1);
-        year5.setForeground(Color.white);
-        year5.setOpaque(false);
-        year5.setContentAreaFilled(false);
-        year5.setBorderPainted(false);
-
+        gb.gridx=2;
+        gb.gridy=5;
+        pane.add(year5,gb);
 
         businessButtons.add(year5);
         businessButtons.add(year3);
 
-        gridbag.gridx=0;
-        gridbag.gridy=6;
-        //gridbag.weighty=200;
-        //gridbag.ipady=40;
-        gridbag.gridwidth=8;
-        gridbag.fill = GridBagConstraints.BOTH;
+        gb.gridx=0;
+        gb.gridy=6;
+        gb.gridwidth=8;
+        gb.fill = GridBagConstraints.BOTH;
 
         submitButton.setFont(font2);
         submitButton.setForeground(Color.white);
         submitButton.setOpaque(false);
         submitButton.setContentAreaFilled(false);
-        //submitButton.setBorderPainted(false);
-        pane.add(submitButton,gridbag);
+        pane.add(submitButton,gb);
+
+        //Pane 2
+        JPanelWithBackground pane2 = new JPanelWithBackground("images/sharkLoadBG.png");
+        pane2.setLayout(new GridBagLayout());
+        GridBagConstraints gb2 = new GridBagConstraints();
+
+        ImageIcon icon2 = new ImageIcon("images/sharkLoansLogo.png");
+        JLabel logo2=new JLabel();
+        logo2.setIcon(icon2);
+
+        gb2.gridwidth=2;
+        gb2.ipady=20;
+        gb2.gridx=1;
+        gb2.gridy=0;
+        pane2.add(logo2,gb2);
+        gb2.gridwidth=1;
+
+        gb2.gridx=0;
+        gb2.gridy=1;
+        pane2.add(results,gb2);
+        gb2.gridx=0;
+        gb2.gridy=0;
+        pane2.add(backToMain,gb2);
+
+
+        cards =new JPanel(new CardLayout());
+        cards.add(pane,"MAIN");
+        cards.add(pane2,"RESULTS");
 
 
         //Display the window.
-        frame.getContentPane().add(pane);
+        frame.getContentPane().add(cards);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public static JButton getAutoButton() {
-        return autoButton;
-    }
+    public JLabel getResults(){ return results; }
 
-    public static ButtonGroup getAutoButtons(){return autoButtons;}
+    public JPanel getCards() { return cards; }
 
-    public static ButtonGroup getHomeButtons(){return homeButtons;}
+    public JButton getBackToMain(){ return backToMain; }
 
-    public static ButtonGroup getBusinessButtons(){return businessButtons;}
+    public JButton getAutoButton() { return autoButton; }
 
-    public static JButton getBusinessButton() {
+    public ButtonGroup getAutoButtons(){return autoButtons;}
+
+    public ButtonGroup getHomeButtons(){return homeButtons;}
+
+    public ButtonGroup getBusinessButtons(){return businessButtons;}
+
+    public JButton getBusinessButton() {
         return businessButton;
     }
 
-    public static JButton getHomeButton() {
+    public JButton getHomeButton() {
         return homeButton;
     }
 
-    public static JButton getSubmitButton() {
+    public JButton getSubmitButton() {
         return submitButton;
     }
 
-    public static JRadioButton getMonths36() {
+    public JRadioButton getMonths36() {
         return months36;
     }
 
-    public static JRadioButton getMonths72() {
+    public JRadioButton getMonths72() {
         return months72;
     }
 
-    public static JRadioButton getYear3() {
+    public JRadioButton getYear3() {
         return year3;
     }
 
-    public static JRadioButton getYear5() {
+    public JRadioButton getYear5() {
         return year5;
     }
 
-    public static JRadioButton getYear15() {
+    public JRadioButton getYear15() {
         return year15;
     }
 
-    public static JRadioButton getYear30() {
+    public JRadioButton getYear30() {
         return year30;
     }
 
-    public static JTextField getDownPayment() {
+    public JTextField getDownPayment() {
         return downPayment;
     }
 
-    public static JTextField getName() {
+    public JTextField getName() {
         return name;
     }
 
-    public static JTextField getPrinciple() {
+    public JTextField getPrinciple() {
         return principle;
     }
 }

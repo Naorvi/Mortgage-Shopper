@@ -5,6 +5,8 @@
       <element id="module-output" name="Mortgage-Shopper" />
       <element id="library" level="application" name="Mortgage-Shopper" />
       <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/lib/mysql-connector-java-8.0.19.jar" path-in-jar="/" />
+      <element id="module-source" name="Mortgage-Shopper" />
+      <element id="dir-copy" path="$PROJECT_DIR$/images" />
     </root>
   </artifact>
 </component>

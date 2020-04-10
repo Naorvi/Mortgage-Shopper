@@ -1,5 +1,6 @@
 import mortgageShopper.Auto;
 import mortgageShopper.Business;
+import mortgageShopper.Loan;
 import mortgageShopper.Mortgage;
 
 import java.awt.*;
@@ -11,8 +12,8 @@ import javax.swing.*;
 class MortgageShopper {
 
         public static void main(String[] args) throws IOException {
-                GUI.createAndShowGUI();
-                Controller c=new Controller();
+                GUI g=new GUI();
+                Controller c=new Controller(g);
                 c.initialGUI();
         }
 }
