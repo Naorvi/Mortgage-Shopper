@@ -22,6 +22,11 @@ public class GUI {
     private ButtonGroup businessButtons=new ButtonGroup();
     private JButton backToMain =new JButton("Back");
     private JLabel results=new JLabel("results");
+    private JLabel errorText=new JLabel();
+    private JLabel bank1, bank2, bank3;
+    private JLabel monthly1, monthly2,monthly3;
+    private JLabel resultsMessage;
+
 
     public void createAndShowGUI() throws IOException {
         //Create and set up the window.
@@ -35,6 +40,7 @@ public class GUI {
         GridBagConstraints gb = new GridBagConstraints();
         Font font1 = new Font("Ariel", Font.BOLD, 20);
         Font font2 = new Font("Ariel", Font.BOLD, 40);
+        Font font3 = new Font("Ariel",Font.BOLD,20);
 
         ImageIcon icon = new ImageIcon("images/sharkLoansLogo.png");
         JLabel logo=new JLabel();
@@ -133,6 +139,12 @@ public class GUI {
         submitButton.setContentAreaFilled(false);
         pane.add(submitButton,gb);
 
+        gb.gridx=0;
+        gb.gridy=10;
+        pane.add(errorText,gb);
+        errorText.setFont(font3);
+        errorText.setForeground(Color.pink);
+
         //Pane 2
         JPanelWithBackground pane2 = new JPanelWithBackground("images/sharkLoadBG.png");
         pane2.setLayout(new GridBagLayout());
@@ -167,6 +179,8 @@ public class GUI {
         frame.pack();
         frame.setVisible(true);
     }
+
+    public JLabel getErrorText(){return errorText;}
 
     public JLabel getResults(){ return results; }
 
