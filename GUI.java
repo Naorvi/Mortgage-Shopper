@@ -4,6 +4,9 @@ import java.io.IOException;
 
 public class GUI {
     private JPanel cards;
+    private ClearJLabel lblName=new ClearJLabel("Name");
+    private ClearJLabel lblPrin= new ClearJLabel("Principle");
+    private ClearJLabel lblDown= new ClearJLabel("Down Payment");
     private JTextField name = new JTextField(20);
     private JTextField principle = new JTextField(20);
     private JTextField downPayment = new JTextField(20);
@@ -25,7 +28,8 @@ public class GUI {
     private JLabel errorText=new JLabel();
     private JLabel bank1, bank2, bank3;
     private JLabel monthly1, monthly2,monthly3;
-    private JLabel resultsMessage;
+    private JLabel resultsMessage=new JLabel();
+    private JSlider credit;
 
 
     public void createAndShowGUI() throws IOException {
@@ -55,26 +59,36 @@ public class GUI {
 
         gb.gridx=0;
         gb.gridy=1;
+        pane.add(lblName, gb);
+
+        gb.gridx=1;
+        gb.gridy=1;
+        pane.add(lblPrin,gb);
+
+        gb.gridx=2;
+        gb.gridy=1;
+        pane.add(lblDown,gb);
+
+
+        gb.gridx=0;
+        gb.gridy=2;
         pane.add(name,gb);
-        name.setText("Name");
         name.setFont(font1);
         name.setForeground(Color.white);
         name.setOpaque(false);
         name.setMinimumSize(new Dimension(200, 10));
 
         gb.gridx=1;
-        gb.gridy=1;
+        gb.gridy=2;
         pane.add(principle,gb);
-        principle.setText("Principle");
         principle.setFont(font1);
         principle.setForeground(Color.white);
         principle.setOpaque(false);
         principle.setMinimumSize(new Dimension(200, 10));
 
         gb.gridx=2;
-        gb.gridy=1;
+        gb.gridy=2;
         pane.add(downPayment,gb);
-        downPayment.setText("Down Payment");
         downPayment.setFont(font1);
         downPayment.setForeground(Color.white);
         downPayment.setOpaque(false);
@@ -154,19 +168,25 @@ public class GUI {
         JLabel logo2=new JLabel();
         logo2.setIcon(icon2);
 
+
         gb2.gridwidth=2;
-        gb2.ipady=20;
         gb2.gridx=1;
         gb2.gridy=0;
         pane2.add(logo2,gb2);
-        gb2.gridwidth=1;
 
-        gb2.gridx=0;
-        gb2.gridy=1;
-        pane2.add(results,gb2);
+        gb2.gridwidth=1;
         gb2.gridx=0;
         gb2.gridy=0;
         pane2.add(backToMain,gb2);
+
+        gb2.gridwidth=3;
+        gb2.ipady=100;
+        gb2.gridx=0;
+        gb2.gridy=1;
+        resultsMessage.setFont(font1);
+        resultsMessage.setForeground(Color.white);
+        pane2.add(resultsMessage,gb2);
+
 
 
         cards =new JPanel(new CardLayout());
@@ -179,6 +199,8 @@ public class GUI {
         frame.pack();
         frame.setVisible(true);
     }
+
+    public JLabel getResultsMessage(){return resultsMessage;}
 
     public JLabel getErrorText(){return errorText;}
 
