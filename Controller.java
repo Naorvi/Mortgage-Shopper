@@ -52,7 +52,7 @@ public class Controller {
     }
 
     public String getName(){
-        return String.valueOf(g.getName());
+        return g.getName().getText();
     }
 
     public double getPrinciple(){
@@ -94,9 +94,12 @@ public class Controller {
         CardLayout cl = (CardLayout) (g.getCards().getLayout());
         cl.show(g.getCards(), "RESULTS");
     }
+
     public void resultsMessage(){
         DecimalFormat df = new DecimalFormat("$#,###,##0.00");
-        g.getResultsMessage().setText("Hi User, With your "
+        g.getResultsMessage().setText("Hi "
+                +getName()
+                +", With your "
                 +df.format(getDown())
                 +" Down Payment you qualify for a "
                 +df.format(getPrinciple())
@@ -106,52 +109,37 @@ public class Controller {
     public void showResults(){
         if (loanType == 1) {
             if (length == 36) {
-                resultsMessage();
-                resultsPane();
                 Auto a = new Auto("Auto 36", 36, getPrinciple(), getDown(), 5.0);
                 double month = a.calculateMonthly();
-                resetLoan();
             }
             if (length == 72) {
-                resultsPane();
                 Auto a = new Auto("Auto 72", 72, getPrinciple(), getDown(), 5.0);
                 double month = a.calculateMonthly();
-                resultsMessage();
-                resetLoan();
             }
         }
         if (loanType == 2) {
             if (length == 180) {
-                resultsPane();
                 Mortgage m = new Mortgage("Home 15 year", 180, getPrinciple(), getDown(), 5.0);
                 double month = m.calculateMonthly();
-                resultsMessage();
-                resetLoan();
             }
             if (length == 360) {
-                resultsPane();
                 Mortgage m = new Mortgage("Home 30 year", 360, getPrinciple(), getDown(), 5.0);
                 double month = m.calculateMonthly();
-                resultsMessage();
-                resetLoan();
             }
         }
         if (loanType == 3) {
             if (length == 60) {
-                resultsPane();
                 Business b = new Business("Business 5 year", 60, getPrinciple(), getDown(), 5.0);
                 double month = b.calculateMonthly();
-                resultsMessage();
-                resetLoan();
             }
             if (length == 36) {
-                resultsPane();
                 Business b = new Business("Business 3 year", 36, getPrinciple(), getDown(), 5.0);
                 double month = b.calculateMonthly();
-                resultsMessage();
-                resetLoan();
             }
         }
+        resultsPane();
+        resultsMessage();
+        resetLoan();
     }
 
     public void initialGUI(){
@@ -175,7 +163,7 @@ public class Controller {
         g.getHomeButton().addActionListener(e->{
             loanType=2;
             disableLengths();
-            g.getAutoButton().setForeground(Color.green);
+            g.getHomeButton().setForeground(Color.green);
             g.getYear15().setEnabled(true);
             g.getYear30().setEnabled(true);
         });
@@ -187,7 +175,7 @@ public class Controller {
         g.getBusinessButton().addActionListener(e->{
             loanType=3;
             disableLengths();
-            g.getAutoButton().setForeground(Color.green);
+            g.getBusinessButton().setForeground(Color.green);
             g.getYear5().setEnabled(true);
             g.getYear3().setEnabled(true);
         });
