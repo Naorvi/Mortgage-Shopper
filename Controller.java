@@ -25,7 +25,6 @@ public class Controller {
             g.getErrorText().setText("Please enter a Valid Principle and Down Payment.");
             return false;
         }
-
     }
 
     public boolean isDownPaymentValid(){
@@ -111,6 +110,9 @@ public class Controller {
             if (length == 36) {
                 Auto a = new Auto("Auto 36", 36, getPrinciple(), getDown(), 5.0);
                 double month = a.calculateMonthly();
+                g.getMonthly1().setText(String.valueOf(month));
+                g.getMonthly2().setText(String.valueOf(month));
+                g.getMonthly3().setText(String.valueOf(month));
             }
             if (length == 72) {
                 Auto a = new Auto("Auto 72", 72, getPrinciple(), getDown(), 5.0);
