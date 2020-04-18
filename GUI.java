@@ -4,6 +4,10 @@ import java.io.IOException;
 
 public class GUI {
     private JPanel cards;
+    private ClearJLabel lblName=new ClearJLabel("Name");
+    private ClearJLabel lblCredit=new ClearJLabel("Credit");
+    private ClearJLabel lblPrin= new ClearJLabel("Principle");
+    private ClearJLabel lblDown= new ClearJLabel("Down Payment");
     private JTextField name = new JTextField(20);
     private JTextField principle = new JTextField(20);
     private JTextField downPayment = new JTextField(20);
@@ -25,7 +29,8 @@ public class GUI {
     private JLabel errorText=new JLabel();
     private JLabel bank1, bank2, bank3;
     private JLabel monthly1, monthly2,monthly3;
-    private JLabel resultsMessage;
+    private JLabel resultsMessage=new JLabel();
+    private JSlider credit=new JSlider();
 
 
     public void createAndShowGUI() throws IOException {
@@ -55,26 +60,36 @@ public class GUI {
 
         gb.gridx=0;
         gb.gridy=1;
+        pane.add(lblName, gb);
+
+        gb.gridx=1;
+        gb.gridy=1;
+        pane.add(lblPrin,gb);
+
+        gb.gridx=2;
+        gb.gridy=1;
+        pane.add(lblDown,gb);
+
+
+        gb.gridx=0;
+        gb.gridy=2;
         pane.add(name,gb);
-        name.setText("Name");
         name.setFont(font1);
         name.setForeground(Color.white);
         name.setOpaque(false);
         name.setMinimumSize(new Dimension(200, 10));
 
         gb.gridx=1;
-        gb.gridy=1;
+        gb.gridy=2;
         pane.add(principle,gb);
-        principle.setText("Principle");
         principle.setFont(font1);
         principle.setForeground(Color.white);
         principle.setOpaque(false);
         principle.setMinimumSize(new Dimension(200, 10));
 
         gb.gridx=2;
-        gb.gridy=1;
+        gb.gridy=2;
         pane.add(downPayment,gb);
-        downPayment.setText("Down Payment");
         downPayment.setFont(font1);
         downPayment.setForeground(Color.white);
         downPayment.setOpaque(false);
@@ -82,54 +97,66 @@ public class GUI {
 
         gb.gridx=0;
         gb.gridy=3;
+        pane.add(lblCredit,gb);
+
+        gb.gridx=0;
+        gb.gridy=4;
+        gb.ipady=10;
+        credit.setOpaque(false);
+        credit.setMinimumSize(new Dimension(200, 10));
+        pane.add(credit,gb);
+        gb.ipady=25;
+
+        gb.gridx=0;
+        gb.gridy=5;
         pane.add(autoButton,gb);
         autoButton.setFont(font1);
 
         gb.gridx=0;
-        gb.gridy=4;
+        gb.gridy=6;
         pane.add(months36,gb);
 
         gb.gridx=0;
-        gb.gridy=5;
+        gb.gridy=7;
         pane.add(months72,gb);
 
         autoButtons.add(months36);
         autoButtons.add(months72);
 
         gb.gridx=1;
-        gb.gridy=3;
+        gb.gridy=5;
         pane.add(homeButton,gb);
         homeButton.setFont(font1);
 
         gb.gridx=1;
-        gb.gridy=4;
+        gb.gridy=6;
         pane.add(year15,gb);
 
         gb.gridx=1;
-        gb.gridy=5;
+        gb.gridy=7;
         pane.add(year30,gb);
 
         homeButtons.add(year15);
         homeButtons.add(year30);
 
         gb.gridx=2;
-        gb.gridy=3;
+        gb.gridy=5;
         pane.add(businessButton,gb);
         businessButton.setFont(font1);
 
         gb.gridx=2;
-        gb.gridy=4;
+        gb.gridy=6;
         pane.add(year3,gb);
 
         gb.gridx=2;
-        gb.gridy=5;
+        gb.gridy=7;
         pane.add(year5,gb);
 
         businessButtons.add(year5);
         businessButtons.add(year3);
 
         gb.gridx=0;
-        gb.gridy=6;
+        gb.gridy=8;
         gb.gridwidth=8;
         gb.fill = GridBagConstraints.BOTH;
 
@@ -154,19 +181,73 @@ public class GUI {
         JLabel logo2=new JLabel();
         logo2.setIcon(icon2);
 
-        gb2.gridwidth=2;
-        gb2.ipady=20;
+        ImageIcon bank1logo = new ImageIcon("images/bank1.png");
+        bank1=new JLabel();
+        bank1.setIcon(bank1logo);
+
+        ImageIcon bank2logo = new ImageIcon("images/bank2.png");
+        bank2=new JLabel();
+        bank2.setIcon(bank2logo);
+
+        ImageIcon bank3logo = new ImageIcon("images/bank3.png");
+        bank3=new JLabel();
+        bank3.setIcon(bank3logo);
+
+        gb2.gridwidth=3;
         gb2.gridx=1;
         gb2.gridy=0;
+        gb2.anchor=GridBagConstraints.LINE_START;
         pane2.add(logo2,gb2);
+
+        gb2.gridwidth=1;
+        gb2.gridx=0;
+        gb2.gridy=0;
+        gb2.anchor=GridBagConstraints.LINE_START;
+        pane2.add(backToMain,gb2);
+
+        gb2.gridwidth=3;
+        gb2.ipady=100;
+        gb2.gridx=0;
+        gb2.gridy=1;
+        resultsMessage.setFont(font1);
+        resultsMessage.setForeground(Color.white);
+        pane2.add(resultsMessage,gb2);
         gb2.gridwidth=1;
 
         gb2.gridx=0;
-        gb2.gridy=1;
-        pane2.add(results,gb2);
+        gb2.gridy=3;
+        gb2.ipadx=50;
+        gb2.ipady=10;
+        pane2.add(bank1,gb2);
+
+
+        gb2.gridx=1;
+        gb.gridy=3;
+        monthly1=new JLabel();
+        monthly1.setFont(font2);
+        pane2.add(monthly1, gb2);
+
         gb2.gridx=0;
-        gb2.gridy=0;
-        pane2.add(backToMain,gb2);
+        gb2.gridy=4;
+        pane2.add(bank2,gb2);
+
+
+        gb2.gridx=1;
+        gb.gridy=4;
+        monthly2=new JLabel();
+        monthly2.setFont(font2);
+        pane2.add(monthly2, gb2);
+
+        gb2.gridx=0;
+        gb2.gridy=5;
+        pane2.add(bank3,gb2);
+
+
+        gb2.gridx=1;
+        gb.gridy=5;
+        monthly3=new JLabel();
+        monthly3.setFont(font2);
+        pane2.add(monthly3, gb2);
 
 
         cards =new JPanel(new CardLayout());
@@ -179,6 +260,14 @@ public class GUI {
         frame.pack();
         frame.setVisible(true);
     }
+
+    public JLabel getResultsMessage(){return resultsMessage;}
+
+    public JLabel getMonthly1(){return monthly1;}
+
+    public JLabel getMonthly2(){return monthly2;}
+
+    public JLabel getMonthly3(){return monthly3;}
 
     public JLabel getErrorText(){return errorText;}
 

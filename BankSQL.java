@@ -62,7 +62,7 @@ public class BankSQL {
     public static Connection connectToSQL() throws Exception{
         try{
             String driver="com.mysql.cj.jdbc.Driver";
-            String url="jdbc:mysql://testsql.copperramparts.com:3306/javasqltest";
+            String url="jdbc:mysql://testsql.copperramparts.com:3306/javasqltest?serverTimezone=UTC";
             String username="test123copper";
             String password="k6@J6r4K7gb^";
             Class.forName(driver);

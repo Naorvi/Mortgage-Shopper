@@ -1,10 +1,10 @@
-import com.mysql.cj.util.StringUtils;
 import mortgageShopper.Auto;
 import mortgageShopper.Business;
 import mortgageShopper.Mortgage;
 
 import java.awt.*;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class Controller {
     private int loanType=0;
@@ -25,18 +25,33 @@ public class Controller {
             g.getErrorText().setText("Please enter a Valid Principle and Down Payment.");
             return false;
         }
-
     }
+
+    public boolean isDownPaymentValid(){
+        if (getDown()>getPrinciple()){
+            g.getErrorText().setText("Please enter a down payment less then your principle.");
+            return false;
+        }
+        else return true;
+    }
+
     public boolean isTermSelected(){
-        if (loanType==0||length==0){
-            g.getErrorText().setText("Please Select a loan type and Lona length.");
+        if (loanType==0){
+            g.getErrorText().setText("Please Select a Loan Type.");
+            g.getBusinessButton().setForeground(Color.pink);
+            g.getAutoButton().setForeground(Color.pink);
+            g.getHomeButton().setForeground(Color.pink);
+            return false;
+        }
+        if(length==0){
+            g.getErrorText().setText("Please Select a Loan length.");
             return false;
         }
         else return true;
     }
 
     public String getName(){
-        return String.valueOf(g.getName());
+        return g.getName().getText();
     }
 
     public double getPrinciple(){
@@ -50,19 +65,83 @@ public class Controller {
     public void disableLengths(){
         g.getMonths36().setEnabled(false);
         g.getMonths72().setEnabled(false);
+        g.getAutoButton().setForeground(Color.WHITE);
 
         g.getAutoButtons().clearSelection();
 
         g.getYear15().setEnabled(false);
         g.getYear30().setEnabled(false);
+        g.getHomeButton().setForeground(Color.WHITE);
 
         g.getHomeButtons().clearSelection();
 
         g.getYear3().setEnabled(false);
         g.getYear5().setEnabled(false);
+        g.getBusinessButton().setForeground(Color.WHITE);
 
         g.getBusinessButtons().clearSelection();
 
+    }
+
+    public void resetLoan(){
+        length=0;
+        loanType=0;
+        disableLengths();
+    }
+
+    public void resultsPane(){
+        CardLayout cl = (CardLayout) (g.getCards().getLayout());
+        cl.show(g.getCards(), "RESULTS");
+    }
+
+    public void resultsMessage(){
+        DecimalFormat df = new DecimalFormat("$#,###,##0.00");
+        g.getResultsMessage().setText("Hi "
+                +getName()
+                +", With your "
+                +df.format(getDown())
+                +" Down Payment you qualify for a "
+                +df.format(getPrinciple())
+                +" loan from these great providers:");
+    }
+
+    public void showResults(){
+        if (loanType == 1) {
+            if (length == 36) {
+                Auto a = new Auto("Auto 36", 36, getPrinciple(), getDown(), 5.0);
+                double month = a.calculateMonthly();
+                g.getMonthly1().setText(String.valueOf(month));
+                g.getMonthly2().setText(String.valueOf(month));
+                g.getMonthly3().setText(String.valueOf(month));
+            }
+            if (length == 72) {
+                Auto a = new Auto("Auto 72", 72, getPrinciple(), getDown(), 5.0);
+                double month = a.calculateMonthly();
+            }
+        }
+        if (loanType == 2) {
+            if (length == 180) {
+                Mortgage m = new Mortgage("Home 15 year", 180, getPrinciple(), getDown(), 5.0);
+                double month = m.calculateMonthly();
+            }
+            if (length == 360) {
+                Mortgage m = new Mortgage("Home 30 year", 360, getPrinciple(), getDown(), 5.0);
+                double month = m.calculateMonthly();
+            }
+        }
+        if (loanType == 3) {
+            if (length == 60) {
+                Business b = new Business("Business 5 year", 60, getPrinciple(), getDown(), 5.0);
+                double month = b.calculateMonthly();
+            }
+            if (length == 36) {
+                Business b = new Business("Business 3 year", 36, getPrinciple(), getDown(), 5.0);
+                double month = b.calculateMonthly();
+            }
+        }
+        resultsPane();
+        resultsMessage();
+        resetLoan();
     }
 
     public void initialGUI(){
@@ -74,6 +153,7 @@ public class Controller {
         g.getAutoButton().addActionListener(e->{
             loanType=1;
             disableLengths();
+            g.getAutoButton().setForeground(Color.green);
             g.getMonths36().setEnabled(true);
             g.getMonths72().setEnabled(true);
         });
@@ -85,6 +165,7 @@ public class Controller {
         g.getHomeButton().addActionListener(e->{
             loanType=2;
             disableLengths();
+            g.getHomeButton().setForeground(Color.green);
             g.getYear15().setEnabled(true);
             g.getYear30().setEnabled(true);
         });
@@ -96,6 +177,7 @@ public class Controller {
         g.getBusinessButton().addActionListener(e->{
             loanType=3;
             disableLengths();
+            g.getBusinessButton().setForeground(Color.green);
             g.getYear5().setEnabled(true);
             g.getYear3().setEnabled(true);
         });
@@ -105,49 +187,9 @@ public class Controller {
         g.getYear3().addActionListener(e->length=36);
 
         g.getSubmitButton().addActionListener(e-> {
-                    if (isValid() && isTermSelected()) {
-                        CardLayout cl = (CardLayout) (g.getCards().getLayout());
-                        cl.show(g.getCards(), "RESULTS");
-                        if (loanType == 1) {
-                            if (length == 36) {
-                                Auto a = new Auto("Auto 36", 36, getPrinciple(), getDown(), 5.0);
-                                double month = a.calculateMonthly();
-                                g.getResults().setText(a + "\nthis is the monthly payment " + month + "\n");
-                            }
-                            if (length == 72) {
-                                Auto a = new Auto("Auto 72", 72, getPrinciple(), getDown(), 5.0);
-                                double month = a.calculateMonthly();
-                                g.getResults().setText(a + "\nthis is the monthly payment " + month + "\n");
-                            }
-                        }
-                        if (loanType == 2) {
-                            if (length == 180) {
-                                Mortgage m = new Mortgage("Home 15 year", 180, getPrinciple(), getDown(), 5.0);
-                                double month = m.calculateMonthly();
-                                g.getResults().setText(m + "\nthis is the monthly payment " + month + "\n");
-                            }
-                            if (length == 360) {
-                                Mortgage m = new Mortgage("Home 30 year", 360, getPrinciple(), getDown(), 5.0);
-                                double month = m.calculateMonthly();
-                                g.getResults().setText(m + "\nthis is the monthly payment " + month + "\n");
-                            }
-                        }
-                        if (loanType == 3) {
-                            if (length == 60) {
-                                Business b = new Business("Business 5 year", 60, getPrinciple(), getDown(), 5.0);
-                                double month = b.calculateMonthly();
-                                g.getResults().setText(b + "\nthis is the monthly payment " + month + "\n");
-                            }
-                            if (length == 36) {
-                                Business b = new Business("Business 3 year", 36, getPrinciple(), getDown(), 5.0);
-                                double month = b.calculateMonthly();
-                                g.getResults().setText(b + "\nthis is the monthly payment " + month + "\n");
-                            }
-                        }
-                    }
-                }
-
-        );
+                    if (isValid() && isTermSelected() && isDownPaymentValid())
+                        showResults();
+                });
     }
 
 
