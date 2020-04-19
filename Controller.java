@@ -6,10 +6,16 @@ import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
+
+
 public class Controller {
+    private double[] interestRates= new double[]{6.4,4.2,5.0};
+    private double[] months= new double[3];
     private int loanType=0;
     private int length=0;
     private GUI g;
+
+    DecimalFormat df = new DecimalFormat("$#,###,##0.00");
     
     Controller(GUI g) throws IOException {
         this.g=g;
@@ -95,7 +101,6 @@ public class Controller {
     }
 
     public void resultsMessage(){
-        DecimalFormat df = new DecimalFormat("$#,###,##0.00");
         g.getResultsMessage().setText("Hi "
                 +getName()
                 +", With your "
@@ -105,38 +110,53 @@ public class Controller {
                 +" loan from these great providers:");
     }
 
+    public void autoLoan(int length){
+        for (int x=0;x<3;x++) {
+            Auto a = new Auto("Auto 36", length, getPrinciple(), getDown(), interestRates[x]);
+            months[x] = a.calculateMonthly();
+            g.getMonthly(x).setText(String.valueOf(df.format(months[x])));
+        }
+    }
+
+    public void homeLoan(int length){
+        for (int x=0;x<3;x++) {
+            Mortgage m = new Mortgage("Home 15 year", length, getPrinciple(), getDown(), interestRates[x]);
+            months[x] = m.calculateMonthly();
+            g.getMonthly(x).setText(String.valueOf(df.format(months[x])));
+        }
+    }
+
+    public void businessLoan(int length){
+        for (int x=0;x<3;x++) {
+            Business b = new Business("Home 15 year", length, getPrinciple(), getDown(), interestRates[x]);
+            months[x] =b.calculateMonthly();
+            g.getMonthly(x).setText(String.valueOf(df.format(months[x])));
+        }
+    }
+
     public void showResults(){
         if (loanType == 1) {
             if (length == 36) {
-                Auto a = new Auto("Auto 36", 36, getPrinciple(), getDown(), 5.0);
-                double month = a.calculateMonthly();
-                g.getMonthly1().setText(String.valueOf(month));
-                g.getMonthly2().setText(String.valueOf(month));
-                g.getMonthly3().setText(String.valueOf(month));
+                autoLoan(length);
             }
             if (length == 72) {
-                Auto a = new Auto("Auto 72", 72, getPrinciple(), getDown(), 5.0);
-                double month = a.calculateMonthly();
+                autoLoan(length);
             }
         }
         if (loanType == 2) {
             if (length == 180) {
-                Mortgage m = new Mortgage("Home 15 year", 180, getPrinciple(), getDown(), 5.0);
-                double month = m.calculateMonthly();
+                homeLoan(length);
             }
             if (length == 360) {
-                Mortgage m = new Mortgage("Home 30 year", 360, getPrinciple(), getDown(), 5.0);
-                double month = m.calculateMonthly();
+                homeLoan(length);
             }
         }
         if (loanType == 3) {
             if (length == 60) {
-                Business b = new Business("Business 5 year", 60, getPrinciple(), getDown(), 5.0);
-                double month = b.calculateMonthly();
+                businessLoan(length);
             }
             if (length == 36) {
-                Business b = new Business("Business 3 year", 36, getPrinciple(), getDown(), 5.0);
-                double month = b.calculateMonthly();
+                businessLoan(length);
             }
         }
         resultsPane();

@@ -27,10 +27,14 @@ public class GUI {
     private JButton backToMain =new JButton("Back");
     private JLabel results=new JLabel("results");
     private JLabel errorText=new JLabel();
-    private JLabel bank1, bank2, bank3;
-    private JLabel monthly1, monthly2,monthly3;
+    //private JLabel bank1, bank2, bank3;
+    private JLabel[] banks = new JLabel[3];
+    private JLabel[] monthly = new JLabel[3];
     private JLabel resultsMessage=new JLabel();
     private JSlider credit=new JSlider();
+
+    public GUI() {
+    }
 
 
     public void createAndShowGUI() throws IOException {
@@ -181,18 +185,6 @@ public class GUI {
         JLabel logo2=new JLabel();
         logo2.setIcon(icon2);
 
-        ImageIcon bank1logo = new ImageIcon("images/bank1.png");
-        bank1=new JLabel();
-        bank1.setIcon(bank1logo);
-
-        ImageIcon bank2logo = new ImageIcon("images/bank2.png");
-        bank2=new JLabel();
-        bank2.setIcon(bank2logo);
-
-        ImageIcon bank3logo = new ImageIcon("images/bank3.png");
-        bank3=new JLabel();
-        bank3.setIcon(bank3logo);
-
         gb2.gridwidth=3;
         gb2.gridx=1;
         gb2.gridy=0;
@@ -214,41 +206,26 @@ public class GUI {
         pane2.add(resultsMessage,gb2);
         gb2.gridwidth=1;
 
-        gb2.gridx=0;
-        gb2.gridy=3;
-        gb2.ipadx=50;
-        gb2.ipady=10;
-        pane2.add(bank1,gb2);
+        for(int x=0;x<3;x++) {
+            ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
+            banks[x]=new JLabel();
+            banks[x].setIcon(bank1logo);
+
+            gb2.gridx = 0;
+            gb2.gridy = x + 3;
+            gb2.ipadx = 50;
+            gb2.ipady = 10;
+            pane2.add(banks[x], gb2);
 
 
-        gb2.gridx=1;
-        gb.gridy=3;
-        monthly1=new JLabel();
-        monthly1.setFont(font2);
-        pane2.add(monthly1, gb2);
+            gb2.gridx=1;
+            gb2.gridy=x+3;
+            monthly[x]=new JLabel();
+            monthly[x].setFont(font2);
+            monthly[x].setForeground(Color.white);
+            pane2.add(monthly[x], gb2);
 
-        gb2.gridx=0;
-        gb2.gridy=4;
-        pane2.add(bank2,gb2);
-
-
-        gb2.gridx=1;
-        gb.gridy=4;
-        monthly2=new JLabel();
-        monthly2.setFont(font2);
-        pane2.add(monthly2, gb2);
-
-        gb2.gridx=0;
-        gb2.gridy=5;
-        pane2.add(bank3,gb2);
-
-
-        gb2.gridx=1;
-        gb.gridy=5;
-        monthly3=new JLabel();
-        monthly3.setFont(font2);
-        pane2.add(monthly3, gb2);
-
+        }
 
         cards =new JPanel(new CardLayout());
         cards.add(pane,"MAIN");
@@ -263,15 +240,9 @@ public class GUI {
 
     public JLabel getResultsMessage(){return resultsMessage;}
 
-    public JLabel getMonthly1(){return monthly1;}
-
-    public JLabel getMonthly2(){return monthly2;}
-
-    public JLabel getMonthly3(){return monthly3;}
+    public JLabel getMonthly(int x){return monthly[x];}
 
     public JLabel getErrorText(){return errorText;}
-
-    public JLabel getResults(){ return results; }
 
     public JPanel getCards() { return cards; }
 
