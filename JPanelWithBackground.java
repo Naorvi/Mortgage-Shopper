@@ -10,7 +10,7 @@ public class JPanelWithBackground extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(1200, 720);
+        return new Dimension(1200, 800);
     }
 
     public JPanelWithBackground(String fileName) throws IOException {
