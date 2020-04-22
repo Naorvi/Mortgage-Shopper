@@ -1,12 +1,24 @@
+
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.awt.*;
 import java.io.IOException;
 import java.util.Hashtable;
 
+//imports for sound
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioSystem;
+
 public class GUI {
 	private JPanel cards;
-
+	
+	//path for sound file
+	String filepath = "Money.wav";
+	
 	//declaring and initializing labels for main page of gui
 	private ClearJLabel lblName = new ClearJLabel("Name");
 	private ClearJLabelCentered lblCredit = new ClearJLabelCentered("Credit Score");
@@ -53,11 +65,14 @@ public class GUI {
 	private JLabel[] monthly = new JLabel[3];
 	private JLabel resultsMessage = new JLabel();
 
-
 	public GUI() {
 	}
 
 	public void createAndShowGUI() throws IOException {
+		
+		// play background music
+		playMusic(filepath);
+		
 		// Create and set up the window.
 		JFrame frame = new JFrame("Shark Loans");
 		frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
@@ -291,8 +306,32 @@ public class GUI {
 		frame.getContentPane().add(cards);
 		frame.pack();
 		frame.setVisible(true);
+		
 	}
 
+	
+	// method to play background music
+	public static void playMusic(String musicLocation) {
+
+		try {
+			File musicPath = new File(musicLocation);
+
+			if (musicPath.exists()) {
+				AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInput);
+				clip.start();
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
+			} else {
+				System.out.println("Can't find file");
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
+	
 	//these are the getter methods so the controller class can access the GUI elements
 
 	public JSlider getCredit(){return credit;}
