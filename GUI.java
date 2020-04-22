@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import java.awt.*;
 import java.io.IOException;
@@ -8,32 +6,53 @@ import java.util.Hashtable;
 
 public class GUI {
 	private JPanel cards;
+
+	//declaring and initializing labels for main page of gui
 	private ClearJLabel lblName = new ClearJLabel("Name");
 	private ClearJLabelCentered lblCredit = new ClearJLabelCentered("Credit Score");
 	private ClearJLabel lblPrin = new ClearJLabel("Principle");
 	private ClearJLabel lblDown = new ClearJLabel("Down Payment");
+
+	//declaring and initializing text fields for main page of gui
 	private ClearJTextField name = new ClearJTextField(20);
 	private ClearJTextField principle = new ClearJTextField(20);
 	private ClearJTextField downPayment = new ClearJTextField(20);
+
+	//declaring and initializing credit slider for main page of gui
+	private JSlider credit = new JSlider();
+
+	//declaring and initializing auto and lengths for main page of gui
 	private ClearJButton autoButton = new ClearJButton("Auto");
 	private ClearJRadioButton months36 = new ClearJRadioButton("36 Months");
 	private ClearJRadioButton months72 = new ClearJRadioButton("72 Months");
+
+	//declaring and initializing mortgage and lengths for main page of gui
 	private ClearJButton homeButton = new ClearJButton("Home");
 	private ClearJRadioButton year15 = new ClearJRadioButton("15 Years");
 	private ClearJRadioButton year30 = new ClearJRadioButton("30 Years");
+
+	//declaring and initializing mortgage and lengths for main page of gui
 	private ClearJButton businessButton = new ClearJButton("Business");
 	private ClearJRadioButton year3 = new ClearJRadioButton("3 Years");
 	private ClearJRadioButton year5 = new ClearJRadioButton("5 Years");
-	private JButton submitButton = new JButton("Submit");
+
+	//declaring and initializing submit button anad error messages for main page of gui
+	private ClearJButton submitButton = new ClearJButton("Submit");
+	private ClearJLabel errorText = new ClearJLabel("");
+
+	//declaring and initializing button groups for each type of loan
 	private ButtonGroup autoButtons = new ButtonGroup();
 	private ButtonGroup homeButtons = new ButtonGroup();
 	private ButtonGroup businessButtons = new ButtonGroup();
+
+	//declaring and initializing the back button for the results page
 	private JButton backToMain = new JButton("Back");
-	private JLabel errorText = new JLabel();
+
+	//declaring and initializing the bank logo arrays and monthly payment results for the results page
 	private JLabel[] banks = new JLabel[3];
 	private JLabel[] monthly = new JLabel[3];
 	private JLabel resultsMessage = new JLabel();
-	private JSlider credit = new JSlider();
+
 
 	public GUI() {
 	}
@@ -50,6 +69,8 @@ public class GUI {
 
 		// create gridbag layout
 		GridBagConstraints gb = new GridBagConstraints();
+
+		//create fonts
 		Font font1 = new Font("Ariel", Font.BOLD, 20);
 		Font font2 = new Font("Ariel", Font.BOLD, 40);
 
@@ -102,20 +123,14 @@ public class GUI {
 		gb.gridy = 3;
 		pane.add(lblCredit, gb);
 
-
-		/*//JSlider credit = new JSlider(JSlider.HORIZONTAL,0,1,2);
-		credit.setMajorTickSpacing(1);
-		credit.setMinorTickSpacing(1);
-		credit.setPaintTicks(true);
-		credit.setPaintLabels(true);*/
-
+		//place credit slider
 		gb.gridx = 1;
 		gb.gridy = 4;
 		gb.ipady = 10;
 		credit.setOpaque(false);
 		credit.setMinimumSize(new Dimension(200, 10));
 		pane.add(credit, gb);
-		gb.ipady = 25;
+		gb.ipady = 30;
 
 		// Turn on labels at major tick marks for credit slider.
 		credit.setMajorTickSpacing(100);
@@ -134,95 +149,107 @@ public class GUI {
 		// Set the label to be drawn
 		credit.setLabelTable(position);
 
-		Font font = new Font("Ariel", Font.BOLD, 20);
-		credit.setFont(font);
-
+		// place auto loan button
 		gb.gridx = 0;
 		gb.gridy = 5;
 		pane.add(autoButton, gb);
-		autoButton.setFont(font1);
 
+		// place 36 month auto loan radio
 		gb.gridx = 0;
 		gb.gridy = 6;
 		pane.add(months36, gb);
 
+		// place 36 month auto loan radio
 		gb.gridx = 0;
 		gb.gridy = 7;
 		pane.add(months72, gb);
 
+		//placed 36 months and 72 months into auto radio group
 		autoButtons.add(months36);
 		autoButtons.add(months72);
 
+		//place home button
 		gb.gridx = 1;
 		gb.gridy = 5;
 		pane.add(homeButton, gb);
-		homeButton.setFont(font1);
 
+		// place 15 year home loan radio
 		gb.gridx = 1;
 		gb.gridy = 6;
 		pane.add(year15, gb);
 
+		// place 30 year home loan radio
 		gb.gridx = 1;
 		gb.gridy = 7;
 		pane.add(year30, gb);
 
+		//placed 15 year and 30 year into home radio group
 		homeButtons.add(year15);
 		homeButtons.add(year30);
 
+		//place business button
 		gb.gridx = 2;
 		gb.gridy = 5;
 		pane.add(businessButton, gb);
-		businessButton.setFont(font1);
 
+		//place 3 year business loan button
 		gb.gridx = 2;
 		gb.gridy = 6;
 		pane.add(year3, gb);
 
+		//place 5 year business loan button
 		gb.gridx = 2;
 		gb.gridy = 7;
 		pane.add(year5, gb);
 
+		//placed 5 year and 3 year into business radio group
 		businessButtons.add(year5);
 		businessButtons.add(year3);
 
+		//place submit button
 		gb.gridx = 0;
 		gb.gridy = 8;
 		gb.gridwidth = 3;
 		gb.fill = GridBagConstraints.BOTH;
-
 		submitButton.setFont(font2);
-		submitButton.setForeground(Color.white);
-		submitButton.setOpaque(false);
-		submitButton.setContentAreaFilled(false);
+		submitButton.setBorderPainted(true);
 		pane.add(submitButton, gb);
 
+		//placing error text
 		gb.gridx = 0;
 		gb.gridy = 10;
 		pane.add(errorText, gb);
-		errorText.setFont(font1);
+		errorText.setFont(font2);
 		errorText.setForeground(Color.pink);
 
-		// Pane 2
+		// Pane 2 "RESULTS"
+		//constructing pane 2 with the background graphic a la custom class
 		JPanelWithBackground pane2 = new JPanelWithBackground("images/sharkLoadBG.png");
+
+		//setting gridbag2 layout
 		pane2.setLayout(new GridBagLayout());
 		GridBagConstraints gb2 = new GridBagConstraints();
 
+		//adding logo to pane2
 		ImageIcon icon2 = new ImageIcon("images/sharkLoansLogo.png");
 		JLabel logo2 = new JLabel();
 		logo2.setIcon(icon2);
 
+		//placing logo into gridbag2
 		gb2.gridwidth = 2;
 		gb2.gridx = 1;
 		gb2.gridy = 0;
 		gb2.anchor = GridBagConstraints.LINE_START;
 		pane2.add(logo2, gb2);
 
+		//placing back button into gridbag2
 		gb2.gridwidth = 1;
 		gb2.gridx = 0;
 		gb2.gridy = 0;
 		gb2.anchor = GridBagConstraints.LINE_START;
 		pane2.add(backToMain, gb2);
 
+		//placing results message into gridbag2
 		gb2.gridwidth = 3;
 		gb2.ipady = 100;
 		gb2.gridx = 0;
@@ -232,12 +259,13 @@ public class GUI {
 		pane2.add(resultsMessage, gb2);
 		gb2.gridwidth = 1;
 
+		//for loop to run though placing logos and monthly prices in the gridbag2
 		for (int x = 0; x < 3; x++) {
 			ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
 			banks[x] = new JLabel();
 			banks[x].setIcon(bank1logo);
 
-			// Banks logo location
+			// Bank logos location
 			gb2.gridx = 0;
 			gb2.gridy = x + 3;
 			gb2.ipadx = 50;
@@ -254,6 +282,7 @@ public class GUI {
 
 		}
 
+		// create the card layout and nests each gridbag pane into each card
 		cards = new JPanel(new CardLayout());
 		cards.add(pane, "MAIN");
 		cards.add(pane2, "RESULTS");
@@ -264,15 +293,15 @@ public class GUI {
 		frame.setVisible(true);
 	}
 
+	//these are the getter methods so the controller class can access the GUI elements
+
 	public JSlider getCredit(){return credit;}
 
 	public JLabel getResultsMessage() {
 		return resultsMessage;
 	}
 
-	public JLabel getMonthly(int x) {
-		return monthly[x];
-	}
+	public JLabel getMonthly(int x) { return monthly[x]; }
 
 	public JLabel getErrorText() {
 		return errorText;
@@ -282,13 +311,9 @@ public class GUI {
 		return cards;
 	}
 
-	public JButton getBackToMain() {
-		return backToMain;
-	}
+	public JButton getBackToMain() { return backToMain; }
 
-	public JButton getAutoButton() {
-		return autoButton;
-	}
+	public JButton getAutoButton() { return autoButton; }
 
 	public ButtonGroup getAutoButtons() {
 		return autoButtons;
@@ -306,9 +331,7 @@ public class GUI {
 		return businessButton;
 	}
 
-	public JButton getHomeButton() {
-		return homeButton;
-	}
+	public JButton getHomeButton() { return homeButton; }
 
 	public JButton getSubmitButton() {
 		return submitButton;
