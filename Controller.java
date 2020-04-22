@@ -13,15 +13,20 @@ public class Controller {
     private double[] months= new double[3];
     private int loanType=0;
     private int length=0;
+    private double credit=1.10;
     private GUI g;
 
     DecimalFormat df = new DecimalFormat("$#,###,##0.00");
-    
+
+    // constructor takes in the GUI object
+    // and calls it's initializer method
     Controller(GUI g) throws IOException {
         this.g=g;
         g.createAndShowGUI();
     }
 
+    // tries parsing the principle and down payment
+    // if it fails it asks user to enter a valid input
     public boolean isValid(){
         try {
             getPrinciple();
@@ -33,6 +38,8 @@ public class Controller {
         }
     }
 
+    //checks to see if down payment is greater the principle
+    // if it is it displays error message
     public boolean isDownPaymentValid(){
         if (getDown()>getPrinciple()){
             g.getErrorText().setText("Please enter a down payment less then your principle.");
@@ -41,6 +48,9 @@ public class Controller {
         else return true;
     }
 
+    // error checks if a loan type is selected
+    // makes loan button pink to signify where the user should click
+    // if the length is zero it also displays message to select a length
     public boolean isTermSelected(){
         if (loanType==0){
             g.getErrorText().setText("Please Select a Loan Type.");
@@ -56,18 +66,28 @@ public class Controller {
         else return true;
     }
 
+    // get the name of the user from the text field
+    // if name is empty then we try to respect their privacy in their search for less then trust worthy source of income
     public String getName(){
-        return g.getName().getText();
+        if (g.getName().getText().equals("")){
+            return "Anonymous Client";
+        }
+        else
+            return g.getName().getText();
     }
 
+    //tries to parse the input of the principle text field into a double
     public double getPrinciple(){
         return Double.parseDouble(g.getPrinciple().getText());
     }
 
+    //tries to parse the input of the down payment text field into a double
     public double getDown(){
         return Double.parseDouble(g.getDownPayment().getText());
     }
 
+    //disables the radio buttons
+    //and clears the selected radios button
     public void disableLengths(){
         g.getMonths36().setEnabled(false);
         g.getMonths72().setEnabled(false);
@@ -89,17 +109,21 @@ public class Controller {
 
     }
 
+    //resets the selected loan type and length to default
     public void resetLoan(){
         length=0;
         loanType=0;
         disableLengths();
     }
 
+    // calls the GUI's card layout to switch the pane to the results pane
     public void resultsPane(){
         CardLayout cl = (CardLayout) (g.getCards().getLayout());
         cl.show(g.getCards(), "RESULTS");
     }
 
+    // creates the message on the results page Was thing of using the toString()
+    // but wanted to make custom message in case we chanted to change it easier
     public void resultsMessage(){
         g.getResultsMessage().setText("Hi "
                 +getName()
@@ -110,30 +134,44 @@ public class Controller {
                 +" loan from these great providers:");
     }
 
+
+    // uses for loop to create loans of the type selected
+    // calculates the monthly payment
+    // sets the monthly payments into the array on the results page
     public void autoLoan(int length){
         for (int x=0;x<3;x++) {
-            Auto a = new Auto("Auto 36", length, getPrinciple(), getDown(), interestRates[x]);
+            Auto a = new Auto("Auto 36", length, getPrinciple(), getDown(), interestRates[x],credit);
             months[x] = a.calculateMonthly();
             g.getMonthly(x).setText(String.valueOf(df.format(months[x])));
         }
     }
 
+    // uses for loop to create loans of the type selected
+    // calculates the monthly payment
+    // sets the monthly payments into the array on the results page
     public void homeLoan(int length){
         for (int x=0;x<3;x++) {
-            Mortgage m = new Mortgage("Home 15 year", length, getPrinciple(), getDown(), interestRates[x]);
+            Mortgage m = new Mortgage("Home 15 year", length, getPrinciple(), getDown(), interestRates[x],credit);
             months[x] = m.calculateMonthly();
             g.getMonthly(x).setText(String.valueOf(df.format(months[x])));
         }
     }
 
+    // uses for loop to create loans of the type selected
+    // calculates the monthly payment
+    // sets the monthly payments into the array on the results page
     public void businessLoan(int length){
         for (int x=0;x<3;x++) {
-            Business b = new Business("Home 15 year", length, getPrinciple(), getDown(), interestRates[x]);
+            Business b = new Business("Home 15 year", length, getPrinciple(), getDown(), interestRates[x],credit);
             months[x] =b.calculateMonthly();
             g.getMonthly(x).setText(String.valueOf(df.format(months[x])));
         }
     }
 
+    // uses radio button and selected loan type to create respective loan class
+    // eg loan type 1 is auto if length is 36 it will call the autoLoan() which will create an auto loan
+    // loan types 1=auto,  2-mortgage, 3=business
+    // after it calls the results pane, then changes the results message, and resets the Loan buttons
     public void showResults(){
         if (loanType == 1) {
             if (length == 36) {
@@ -164,12 +202,32 @@ public class Controller {
         resetLoan();
     }
 
+    //takes credit slider in, and assign credit multiplier to slider ranges
+    public void setCredit(){
+        if(g.getCredit().getValue()<40){
+            credit=1.25;
+        }
+        if(g.getCredit().getValue()<80 && g.getCredit().getValue()>=40){
+            credit=1.10;
+        }
+        if(g.getCredit().getValue()>=80 && g.getCredit().getValue()<=100)
+            credit=1;
+    }
+
+    //initializes all the GUI functions
     public void initialGUI(){
         disableLengths();
+
+        //credit slider
+        g.getCredit().addChangeListener(e -> setCredit());
+
+        //back button on results page
         g.getBackToMain().addActionListener(e -> {
             CardLayout cl = (CardLayout)(g.getCards().getLayout());
             cl.show(g.getCards(), "MAIN");
         });
+
+        //auto button
         g.getAutoButton().addActionListener(e->{
             loanType=1;
             disableLengths();
@@ -178,10 +236,13 @@ public class Controller {
             g.getMonths72().setEnabled(true);
         });
 
+        // 36 month auto loan
         g.getMonths36().addActionListener(e-> length=36);
 
+        //72 month auto loan
         g.getMonths72().addActionListener(e-> length=72);
 
+        //mortgage button
         g.getHomeButton().addActionListener(e->{
             loanType=2;
             disableLengths();
@@ -190,10 +251,13 @@ public class Controller {
             g.getYear30().setEnabled(true);
         });
 
+        //15 year mortgage
         g.getYear15().addActionListener(e->length=180);
 
+        //30 year mortgage
         g.getYear30().addActionListener(e->length=360);
 
+        //business button
         g.getBusinessButton().addActionListener(e->{
             loanType=3;
             disableLengths();
@@ -202,10 +266,13 @@ public class Controller {
             g.getYear3().setEnabled(true);
         });
 
+        //5 year business loan
         g.getYear5().addActionListener(e->length=60);
 
+        //3 year business loan
         g.getYear3().addActionListener(e->length=36);
 
+        //submit button
         g.getSubmitButton().addActionListener(e-> {
                     if (isValid() && isTermSelected() && isDownPaymentValid())
                         showResults();
