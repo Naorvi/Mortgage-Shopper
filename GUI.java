@@ -9,12 +9,12 @@ import java.util.Hashtable;
 public class GUI {
 	private JPanel cards;
 	private ClearJLabel lblName = new ClearJLabel("Name");
-	private ClearJLabel lblCredit = new ClearJLabel("                 Credit Score");
+	private ClearJLabelCentered lblCredit = new ClearJLabelCentered("Credit Score");
 	private ClearJLabel lblPrin = new ClearJLabel("Principle");
 	private ClearJLabel lblDown = new ClearJLabel("Down Payment");
-	private JTextField name = new JTextField(20);
-	private JTextField principle = new JTextField(20);
-	private JTextField downPayment = new JTextField(20);
+	private ClearJTextField name = new ClearJTextField(20);
+	private ClearJTextField principle = new ClearJTextField(20);
+	private ClearJTextField downPayment = new ClearJTextField(20);
 	private ClearJButton autoButton = new ClearJButton("Auto");
 	private ClearJRadioButton months36 = new ClearJRadioButton("36 Months");
 	private ClearJRadioButton months72 = new ClearJRadioButton("72 Months");
@@ -29,9 +29,7 @@ public class GUI {
 	private ButtonGroup homeButtons = new ButtonGroup();
 	private ButtonGroup businessButtons = new ButtonGroup();
 	private JButton backToMain = new JButton("Back");
-	private JLabel results = new JLabel("results");
 	private JLabel errorText = new JLabel();
-	// private JLabel bank1, bank2, bank3;
 	private JLabel[] banks = new JLabel[3];
 	private JLabel[] monthly = new JLabel[3];
 	private JLabel resultsMessage = new JLabel();
@@ -46,18 +44,21 @@ public class GUI {
 		frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		//load BG pic
 		JPanelWithBackground pane = new JPanelWithBackground("images/sharkLoadBG.png");
 		pane.setLayout(new GridBagLayout());
 
+		// create gridbag layout
 		GridBagConstraints gb = new GridBagConstraints();
 		Font font1 = new Font("Ariel", Font.BOLD, 20);
 		Font font2 = new Font("Ariel", Font.BOLD, 40);
-		Font font3 = new Font("Ariel", Font.BOLD, 20);
 
+		//reserving logo picture
 		ImageIcon icon = new ImageIcon("images/sharkLoansLogo.png");
 		JLabel logo = new JLabel();
 		logo.setIcon(icon);
 
+		// placing logo letting it take up whole width of top gridx=0
 		gb.gridwidth = 3;
 		gb.ipady = 20;
 		gb.gridx = 0;
@@ -65,45 +66,48 @@ public class GUI {
 		pane.add(logo, gb);
 		gb.gridwidth = 1;
 
+		//placing "Name" label
 		gb.gridx = 0;
 		gb.gridy = 1;
 		pane.add(lblName, gb);
 
+		//placing "Principle" label
 		gb.gridx = 1;
 		gb.gridy = 1;
 		pane.add(lblPrin, gb);
 
+		//placing "Down Payment" label
 		gb.gridx = 2;
 		gb.gridy = 1;
 		pane.add(lblDown, gb);
 
+		// placing Name Textfield
 		gb.gridx = 0;
 		gb.gridy = 2;
 		pane.add(name, gb);
-		name.setFont(font1);
-		name.setForeground(Color.white);
-		name.setOpaque(false);
-		name.setMinimumSize(new Dimension(200, 10));
 
+		// placing Principle Textfield
 		gb.gridx = 1;
 		gb.gridy = 2;
 		pane.add(principle, gb);
-		principle.setFont(font1);
-		principle.setForeground(Color.white);
-		principle.setOpaque(false);
-		principle.setMinimumSize(new Dimension(200, 10));
 
+		// placing Down Payment Textfield
 		gb.gridx = 2;
 		gb.gridy = 2;
 		pane.add(downPayment, gb);
-		downPayment.setFont(font1);
-		downPayment.setForeground(Color.white);
-		downPayment.setOpaque(false);
-		downPayment.setMinimumSize(new Dimension(200, 10));
 
+
+		//place "Credit" label******Need To Center*******
 		gb.gridx = 1;
 		gb.gridy = 3;
 		pane.add(lblCredit, gb);
+
+
+		/*//JSlider credit = new JSlider(JSlider.HORIZONTAL,0,1,2);
+		credit.setMajorTickSpacing(1);
+		credit.setMinorTickSpacing(1);
+		credit.setPaintTicks(true);
+		credit.setPaintLabels(true);*/
 
 		gb.gridx = 1;
 		gb.gridy = 4;
@@ -114,8 +118,8 @@ public class GUI {
 		gb.ipady = 25;
 
 		// Turn on labels at major tick marks for credit slider.
-		credit.setMajorTickSpacing(150);
-		credit.setMinorTickSpacing(25);
+		credit.setMajorTickSpacing(100);
+		credit.setMinorTickSpacing(50);
 		credit.setPaintTicks(true);
 
 		// Set the labels to be painted on the slider
@@ -183,7 +187,7 @@ public class GUI {
 
 		gb.gridx = 0;
 		gb.gridy = 8;
-		gb.gridwidth = 8;
+		gb.gridwidth = 3;
 		gb.fill = GridBagConstraints.BOTH;
 
 		submitButton.setFont(font2);
@@ -195,7 +199,7 @@ public class GUI {
 		gb.gridx = 0;
 		gb.gridy = 10;
 		pane.add(errorText, gb);
-		errorText.setFont(font3);
+		errorText.setFont(font1);
 		errorText.setForeground(Color.pink);
 
 		// Pane 2
@@ -207,7 +211,7 @@ public class GUI {
 		JLabel logo2 = new JLabel();
 		logo2.setIcon(icon2);
 
-		gb2.gridwidth = 3;
+		gb2.gridwidth = 2;
 		gb2.gridx = 1;
 		gb2.gridy = 0;
 		gb2.anchor = GridBagConstraints.LINE_START;
@@ -259,6 +263,8 @@ public class GUI {
 		frame.pack();
 		frame.setVisible(true);
 	}
+
+	public JSlider getCredit(){return credit;}
 
 	public JLabel getResultsMessage() {
 		return resultsMessage;

@@ -3,6 +3,7 @@ package mortgageShopper;
 public class Business extends mortgageShopper.Loan {
 	private int length;
 	private String bankName;
+	private double credit;
 
 	// default constructor
 	Business() {
@@ -11,7 +12,8 @@ public class Business extends mortgageShopper.Loan {
 	}
 
 	// parameter constructor
-	public Business(String nam, int lngth, double prin, double down, double intrest) {
+	public Business(String nam, int lngth, double prin, double down, double intrest, double credit) {
+		this.credit=credit;
 		bankName=nam;
 		length = lngth;
 		super.setPrinciple(prin);
@@ -46,9 +48,16 @@ public class Business extends mortgageShopper.Loan {
 	}
 
 	// override calculateMonthy method
+	// (princ-down)*(interest)
+	// 			+princ-down
+	// 				/length
+	//					*credit multiplier
 	public double calculateMonthly() {
 
-		return (((super.getPrinciple()-super.getDownPayment())*(super.getInterestRate()/100))+(super.getPrinciple()-super.getDownPayment()))/length;
+		return ((((super.getPrinciple()-super.getDownPayment())*(super.getInterestRate()/100))
+							+(super.getPrinciple()-super.getDownPayment()))
+										/length)
+												*credit;
 
 	}
 
