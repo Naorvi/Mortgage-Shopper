@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 
-
 public class Controller {
     private double[] interestRates= new double[]{6.4,4.2,5.0};
     private double[] months= new double[3];
@@ -17,6 +16,8 @@ public class Controller {
     private GUI g;
 
     DecimalFormat df = new DecimalFormat("$#,###,##0.00");
+
+
 
     // constructor takes in the GUI object
     // and calls it's initializer method
@@ -213,6 +214,13 @@ public class Controller {
         }
         if(g.getCredit().getValue()>=80 && g.getCredit().getValue()<=100)
             credit=1;
+    }
+
+    //get interest rates from SQL server only usable from a static method
+    public void getInterestRatesFromSQL(){
+        for(int x=0;x<3;x++){
+            interestRates[x]= BankSQL.getList().get(x).getRate();
+        }
     }
 
     //initializes all the GUI functions

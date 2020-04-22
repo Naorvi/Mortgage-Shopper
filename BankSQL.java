@@ -16,13 +16,13 @@ public class BankSQL {
 
             Connection con = connectToSQL();
             PreparedStatement readData = con.prepareStatement(
-                    "SELECT bankname, intrestrate FROM banks"
+                    "SELECT bankname, interestrate FROM banks"
             );
             ResultSet results=readData.executeQuery();
             while (results.next()) {
                 Banks x= new Banks();
                 x.setName(results.getString("bankname"));
-                x.setRate(results.getDouble("intrestrate"));
+                x.setRate(results.getDouble("interestrate"));
                 banks.add(x);
             }
             results.close();
@@ -36,7 +36,7 @@ public class BankSQL {
         try{
             Connection con =connectToSQL();
             PreparedStatement insertData=con.prepareStatement(
-                    "INSERT INTO banks (bankname,intrestrate) VALUES('"+name+"','"+intRate+"')"
+                    "INSERT INTO banks (bankname,interestrate) VALUES('"+name+"','"+intRate+"')"
             );
             insertData.executeUpdate();
             insertData.close();
@@ -51,7 +51,7 @@ public class BankSQL {
         try{
             Connection con =connectToSQL();
             PreparedStatement createTable=con.prepareStatement(
-                    "CREATE TABLE IF NOT EXISTS banks(id int NOT NULL AUTO_INCREMENT, bankname varchar(255), intrestrate float(50,10), PRIMARY KEY(id))");
+                    "CREATE TABLE IF NOT EXISTS banks(id int NOT NULL AUTO_INCREMENT, bankname varchar(255), interestrate float(50,10), PRIMARY KEY(id))");
             createTable.executeUpdate();
             createTable.close();
         }

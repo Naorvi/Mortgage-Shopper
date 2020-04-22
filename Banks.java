@@ -13,7 +13,6 @@ public class Banks {
         interestRate=rate;
     }
 
-
     public String getName(){
         return name;
     }
