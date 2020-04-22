@@ -114,6 +114,7 @@ public class Controller {
         length=0;
         loanType=0;
         disableLengths();
+        g.getErrorText().setText("");
     }
 
     // calls the GUI's card layout to switch the pane to the results pane
@@ -168,7 +169,7 @@ public class Controller {
         }
     }
 
-    // uses radio button and selected loan type to create respective loan class
+    // uses radio button and selected loan type to call the method to construct corresponding loan type
     // eg loan type 1 is auto if length is 36 it will call the autoLoan() which will create an auto loan
     // loan types 1=auto,  2-mortgage, 3=business
     // after it calls the results pane, then changes the results message, and resets the Loan buttons
