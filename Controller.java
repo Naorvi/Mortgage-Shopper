@@ -26,6 +26,7 @@ public class Controller {
         g.createAndShowGUI();
     }
 
+    //~~~~~~~~~~~~~~~~~~~INPUT VALIDATION~~~~~~~~~~~~~~~~
     // tries parsing the principle and down payment
     // if it fails it asks user to enter a valid input
     public boolean isValid(){
@@ -67,6 +68,7 @@ public class Controller {
         else return true;
     }
 
+    //~~~~~~~~~~~~~~~~~~~TEXT FIELD RETRIEVAL~~~~~~~~~~~~~~~~
     // get the name of the user from the text field
     // if name is empty then we try to respect their privacy in their search for less then trust worthy source of income
     public String getName(){
@@ -87,6 +89,8 @@ public class Controller {
         return Double.parseDouble(g.getDownPayment().getText());
     }
 
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~GUI FUNCTIONS~~~~~~~~~~~~~~~~~~~~
     //disables the radio buttons
     //and clears the selected radios button
     public void disableLengths(){
@@ -122,6 +126,15 @@ public class Controller {
     public void resultsPane(){
         CardLayout cl = (CardLayout) (g.getCards().getLayout());
         cl.show(g.getCards(), "RESULTS");
+    }
+
+    //~~~~~~~~~~~~~~~~~~~~DATA MANIPULATION(should be moved into MODEL)~~~~~~~~~~~~~~~~~~~
+
+    //get interest rates from SQL server only usable from a static method
+    public void getInterestRatesFromSQL(){
+        for(int x=0;x<3;x++){
+            interestRates[x]= BankSQL.getList().get(x).getRate();
+        }
     }
 
     // creates the message on the results page Was thing of using the toString()
@@ -170,6 +183,7 @@ public class Controller {
         }
     }
 
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~GUI PROCESSING~~~~~~~~~~~~~~~~~~~~~~~~~
     // uses radio button and selected loan type to call the method to construct corresponding loan type
     // eg loan type 1 is auto if length is 36 it will call the autoLoan() which will create an auto loan
     // loan types 1=auto,  2-mortgage, 3=business
@@ -216,12 +230,6 @@ public class Controller {
             credit=1;
     }
 
-    //get interest rates from SQL server only usable from a static method
-    public void getInterestRatesFromSQL(){
-        for(int x=0;x<3;x++){
-            interestRates[x]= BankSQL.getList().get(x).getRate();
-        }
-    }
 
     //initializes all the GUI functions
     public void initialGUI(){
