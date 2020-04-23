@@ -1,6 +1,5 @@
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -37,7 +36,7 @@ public class GUI {
 	private ClearJRadioButton year3 = new ClearJRadioButton("3 Years");
 	private ClearJRadioButton year5 = new ClearJRadioButton("5 Years");
 
-	//declaring and initializing submit button anad error messages for main page of gui
+	//declaring and initializing submit button and error messages for main page of gui
 	private ClearJButton submitButton = new ClearJButton("Submit");
 	private ClearJLabel errorText = new ClearJLabel("");
 
@@ -63,7 +62,7 @@ public class GUI {
 		JFrame frame = new JFrame("Shark Loans");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		/*
+		/* left this in, in case classloader doesn't work
 		frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
 		JPanelWithBackground pane = new JPanelWithBackground("images/sharkLoadBG.png");
 		ImageIcon icon = new ImageIcon("images/sharkLoansLogo.png");
@@ -81,7 +80,7 @@ public class GUI {
 		//***************** pane 1 "MAIN" *******************
 		pane.setLayout(new GridBagLayout());
 
-		// create gridbag layout
+		// create grid bag layout
 		GridBagConstraints gb = new GridBagConstraints();
 
 		//create fonts
@@ -92,7 +91,7 @@ public class GUI {
 		JLabel logo = new JLabel();
 		logo.setIcon(icon);
 
-		// placing logo letting it take up whole width of top gridx=0
+		// placing logo letting it take up whole width of top grid x=0
 		gb.gridwidth = 3;
 		gb.ipady = 20;
 		gb.gridx = 0;
@@ -115,17 +114,17 @@ public class GUI {
 		gb.gridy = 1;
 		pane.add(lblDown, gb);
 
-		// _________ placing Name Textfield _____________
+		// _________ placing Name Text field _____________
 		gb.gridx = 0;
 		gb.gridy = 2;
 		pane.add(name, gb);
 
-		// placing Principle Textfield
+		// placing Principle Text field
 		gb.gridx = 1;
 		gb.gridy = 2;
 		pane.add(principle, gb);
 
-		// placing Down Payment Textfield
+		// placing Down Payment Text field
 		gb.gridx = 2;
 		gb.gridy = 2;
 		pane.add(downPayment, gb);
@@ -242,7 +241,7 @@ public class GUI {
 		errorText.setForeground(Color.pink);
 
 		//***************** Pane 2 "RESULTS" ****************
-		//setting gridbag2 layout
+		//setting grid bag2 layout
 		pane2.setLayout(new GridBagLayout());
 		GridBagConstraints gb2 = new GridBagConstraints();
 
@@ -251,21 +250,21 @@ public class GUI {
 		JLabel logo2 = new JLabel();
 		logo2.setIcon(icon2);
 
-		//placing logo into gridbag2
+		//placing logo into grid bag2
 		gb2.gridwidth = 2;
 		gb2.gridx = 1;
 		gb2.gridy = 0;
 		gb2.anchor = GridBagConstraints.LINE_START;
 		pane2.add(logo2, gb2);
 
-		//placing back button into gridbag2
+		//placing back button into grid bag2
 		gb2.gridwidth = 1;
 		gb2.gridx = 0;
 		gb2.gridy = 0;
 		gb2.anchor = GridBagConstraints.LINE_START;
 		pane2.add(backToMain, gb2);
 
-		//**********placing results message into gridbag2************
+		//**********placing results message into grid bag2************
 		gb2.gridwidth = 3;
 		gb2.ipady = 100;
 		gb2.gridx = 0;
@@ -275,7 +274,7 @@ public class GUI {
 		pane2.add(resultsMessage, gb2);
 		gb2.gridwidth = 1;
 
-		//^^^^^^for loop to run though placing logos and monthly prices in the gridbag2^^^^
+		//^^^^^^for loop to run though placing logos and monthly prices in the grid bag2 ^^^^
 		for (int x = 0; x < 3; x++) {
 			// normal image import ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
 			ImageIcon bank1logo = new ImageIcon(cl.getResource("images/bank" + (x + 1) + ".png"));
@@ -299,7 +298,7 @@ public class GUI {
 
 		}
 
-		// $$$$$$$$$$$$$ create the card layout and nests each gridbag pane into each card $$$$$$$$
+		// $$$$$$$$$$$$$ create the card layout and nests each grid bag pane into each card $$$$$$$$
 		cards = new JPanel(new CardLayout());
 		cards.add(pane, "MAIN");
 		cards.add(pane2, "RESULTS");
