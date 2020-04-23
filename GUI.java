@@ -118,7 +118,7 @@ public class GUI {
 		pane.add(downPayment, gb);
 
 
-		//place "Credit" label******Need To Center*******
+		//place "Credit" label
 		gb.gridx = 1;
 		gb.gridy = 3;
 		pane.add(lblCredit, gb);
