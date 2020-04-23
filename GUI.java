@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -60,12 +61,26 @@ public class GUI {
 	public void createAndShowGUI() throws IOException {
 		// Create and set up the window.
 		JFrame frame = new JFrame("Shark Loans");
-		frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		//load BG pic
+		/*
+		frame.setIconImage(new ImageIcon("images/SharkIcon.png").getImage());
 		JPanelWithBackground pane = new JPanelWithBackground("images/sharkLoadBG.png");
+		ImageIcon icon = new ImageIcon("images/sharkLoansLogo.png");
+		JPanelWithBackground pane2 = new JPanelWithBackground("images/sharkLoadBG.png");
+		 */
+
+		//image imports for creating .jar file
+		ClassLoader cl = this.getClass().getClassLoader();
+		frame.setIconImage(new ImageIcon(cl.getResource("images/sharkicon.png")).getImage());
+		JPanelWithBackground pane = new JPanelWithBackground(cl.getResource("images/sharkLoadBG.png"));
+		ImageIcon icon = new ImageIcon(cl.getResource("images/sharkLoansLogo.png"));
+		JPanelWithBackground pane2 = new JPanelWithBackground(cl.getResource("images/sharkLoadBG.png"));
+		ImageIcon icon2 = new ImageIcon(cl.getResource("images/sharkLoansLogo.png"));
+
+		//***************** pane 1 "MAIN" *******************
 		pane.setLayout(new GridBagLayout());
+
 
 		// create gridbag layout
 		GridBagConstraints gb = new GridBagConstraints();
@@ -75,7 +90,6 @@ public class GUI {
 		Font font2 = new Font("Ariel", Font.BOLD, 40);
 
 		//reserving logo picture
-		ImageIcon icon = new ImageIcon("images/sharkLoansLogo.png");
 		JLabel logo = new JLabel();
 		logo.setIcon(icon);
 
@@ -87,7 +101,7 @@ public class GUI {
 		pane.add(logo, gb);
 		gb.gridwidth = 1;
 
-		//placing "Name" label
+		// %%%%%%%%% placing "Name" label %%%%%%%%%
 		gb.gridx = 0;
 		gb.gridy = 1;
 		pane.add(lblName, gb);
@@ -102,7 +116,7 @@ public class GUI {
 		gb.gridy = 1;
 		pane.add(lblDown, gb);
 
-		// placing Name Textfield
+		// _________ placing Name Textfield _____________
 		gb.gridx = 0;
 		gb.gridy = 2;
 		pane.add(name, gb);
@@ -123,7 +137,7 @@ public class GUI {
 		gb.gridy = 3;
 		pane.add(lblCredit, gb);
 
-		//place credit slider
+		//+++++++++++++++++++ place credit slider ++++++++++
 		gb.gridx = 1;
 		gb.gridy = 4;
 		gb.ipady = 10;
@@ -157,7 +171,7 @@ public class GUI {
 		// Set the label to be drawn
 		credit.setLabelTable(position);
 
-		// place auto loan button
+		// ~~~~~~~~~ place auto loan button ~~~~~~~~~~
 		gb.gridx = 0;
 		gb.gridy = 5;
 		pane.add(autoButton, gb);
@@ -214,7 +228,7 @@ public class GUI {
 		businessButtons.add(year5);
 		businessButtons.add(year3);
 
-		//place submit button
+		//~~~~~~~~~~~~~ place submit button ~~~~~~~~~~~~~~
 		gb.gridx = 0;
 		gb.gridy = 8;
 		gb.gridwidth = 3;
@@ -230,16 +244,13 @@ public class GUI {
 		errorText.setFont(font2);
 		errorText.setForeground(Color.pink);
 
-		// Pane 2 "RESULTS"
-		//constructing pane 2 with the background graphic a la custom class
-		JPanelWithBackground pane2 = new JPanelWithBackground("images/sharkLoadBG.png");
-
+		//***************** Pane 2 "RESULTS" ****************
 		//setting gridbag2 layout
 		pane2.setLayout(new GridBagLayout());
 		GridBagConstraints gb2 = new GridBagConstraints();
 
 		//adding logo to pane2
-		ImageIcon icon2 = new ImageIcon("images/sharkLoansLogo.png");
+		//ImageIcon icon2 = new ImageIcon("images/sharkLoansLogo.png");
 		JLabel logo2 = new JLabel();
 		logo2.setIcon(icon2);
 
@@ -269,7 +280,8 @@ public class GUI {
 
 		//for loop to run though placing logos and monthly prices in the gridbag2
 		for (int x = 0; x < 3; x++) {
-			ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
+			// normal image import ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
+			ImageIcon bank1logo = new ImageIcon(cl.getResource("images/bank" + (x + 1) + ".png"));
 			banks[x] = new JLabel();
 			banks[x].setIcon(bank1logo);
 

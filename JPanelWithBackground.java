@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.lang.String;
+import java.net.URL;
 
 public class JPanelWithBackground extends JPanel {
     private Image backgroundImage;
@@ -15,6 +16,9 @@ public class JPanelWithBackground extends JPanel {
 
     public JPanelWithBackground(String fileName) throws IOException {
         backgroundImage = ImageIO.read(new File(fileName));
+    }
+    public JPanelWithBackground(URL image)throws IOException {
+        backgroundImage = ImageIO.read(image);
     }
 
     public void paintComponent(Graphics g) {
