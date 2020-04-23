@@ -206,13 +206,13 @@ public class Controller {
 
     //takes credit slider in, and assign credit multiplier to slider ranges
     public void setCredit(){
-        if(g.getCredit().getValue()<40){
+        if(g.getCredit().getValue()==0){
             credit=1.25;
         }
-        if(g.getCredit().getValue()<80 && g.getCredit().getValue()>=40){
+        if(g.getCredit().getValue()==50){
             credit=1.10;
         }
-        if(g.getCredit().getValue()>=80 && g.getCredit().getValue()<=100)
+        if(g.getCredit().getValue()==100)
             credit=1;
     }
 

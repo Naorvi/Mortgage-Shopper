@@ -128,7 +128,6 @@ public class GUI {
 		gb.gridy = 4;
 		gb.ipady = 10;
 		credit.setOpaque(false);
-		credit.setMinimumSize(new Dimension(200, 10));
 		pane.add(credit, gb);
 		gb.ipady = 30;
 
@@ -136,15 +135,24 @@ public class GUI {
 		credit.setMajorTickSpacing(100);
 		credit.setMinorTickSpacing(50);
 		credit.setPaintTicks(true);
+		credit.setSnapToTicks( true );
+
 
 		// Set the labels to be painted on the slider
 		credit.setPaintLabels(true);
 
+
 		// Add positions label in the slider
+		JLabel lLabel1 = new JLabel( "Average");
+		lLabel1.setForeground( Color.WHITE );
+		JLabel lLabel2 = new JLabel( "Good");
+		lLabel2.setForeground( Color.WHITE );
+		JLabel lLabel3 = new JLabel( "Excellent");
+		lLabel3.setForeground( Color.WHITE );
 		Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
-		position.put(0, new JLabel("Average"));
-		position.put(50, new JLabel("Good"));
-		position.put(100, new JLabel("Excellent"));
+		position.put(0, lLabel1);
+		position.put(50, lLabel2);
+		position.put(100, lLabel3);
 
 		// Set the label to be drawn
 		credit.setLabelTable(position);
