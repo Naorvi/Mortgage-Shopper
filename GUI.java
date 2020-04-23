@@ -81,7 +81,6 @@ public class GUI {
 		//***************** pane 1 "MAIN" *******************
 		pane.setLayout(new GridBagLayout());
 
-
 		// create gridbag layout
 		GridBagConstraints gb = new GridBagConstraints();
 
@@ -151,10 +150,8 @@ public class GUI {
 		credit.setPaintTicks(true);
 		credit.setSnapToTicks( true );
 
-
 		// Set the labels to be painted on the slider
 		credit.setPaintLabels(true);
-
 
 		// Add positions label in the slider
 		JLabel lLabel1 = new JLabel( "Average");
@@ -268,7 +265,7 @@ public class GUI {
 		gb2.anchor = GridBagConstraints.LINE_START;
 		pane2.add(backToMain, gb2);
 
-		//placing results message into gridbag2
+		//**********placing results message into gridbag2************
 		gb2.gridwidth = 3;
 		gb2.ipady = 100;
 		gb2.gridx = 0;
@@ -278,7 +275,7 @@ public class GUI {
 		pane2.add(resultsMessage, gb2);
 		gb2.gridwidth = 1;
 
-		//for loop to run though placing logos and monthly prices in the gridbag2
+		//^^^^^^for loop to run though placing logos and monthly prices in the gridbag2^^^^
 		for (int x = 0; x < 3; x++) {
 			// normal image import ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
 			ImageIcon bank1logo = new ImageIcon(cl.getResource("images/bank" + (x + 1) + ".png"));
@@ -302,7 +299,7 @@ public class GUI {
 
 		}
 
-		// create the card layout and nests each gridbag pane into each card
+		// $$$$$$$$$$$$$ create the card layout and nests each gridbag pane into each card $$$$$$$$
 		cards = new JPanel(new CardLayout());
 		cards.add(pane, "MAIN");
 		cards.add(pane2, "RESULTS");
