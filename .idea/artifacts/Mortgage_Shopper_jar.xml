@@ -6,7 +6,14 @@
       <element id="library" level="application" name="Mortgage-Shopper" />
       <element id="extracted-dir" path="$APPLICATION_HOME_DIR$/lib/mysql-connector-java-8.0.19.jar" path-in-jar="/" />
       <element id="module-source" name="Mortgage-Shopper" />
-      <element id="dir-copy" path="$PROJECT_DIR$/images" />
+      <element id="directory" name="images">
+        <element id="file-copy" path="$PROJECT_DIR$/images/bank1.png" />
+        <element id="file-copy" path="$PROJECT_DIR$/images/bank2.png" />
+        <element id="file-copy" path="$PROJECT_DIR$/images/bank3.png" />
+        <element id="file-copy" path="$PROJECT_DIR$/images/sharkicon.png" />
+        <element id="file-copy" path="$PROJECT_DIR$/images/sharkLoadBG.png" />
+        <element id="file-copy" path="$PROJECT_DIR$/images/sharkLoansLogo.png" />
+      </element>
     </root>
   </artifact>
 </component>

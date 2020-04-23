@@ -5,6 +5,7 @@ class MortgageShopper {
                 Controller c=new Controller(g);
                 c.initialGUI();
                 BankSQL.readBanksSQL();
-                System.out.println(BankSQL.getList().toString());
+                //System.out.println(BankSQL.getList().toString());
+                c.getInterestRatesFromSQL();
         }
 }
