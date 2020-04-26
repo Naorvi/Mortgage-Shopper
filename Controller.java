@@ -124,8 +124,10 @@ public class Controller {
 
     // calls the GUI's card layout to switch the pane to the results pane
     public void resultsPane(){
+    	String cashRegister = "Cash.wav";
         CardLayout cl = (CardLayout) (g.getCards().getLayout());
         cl.show(g.getCards(), "RESULTS");
+        GUI.SoundEffects(cashRegister);
     }
 
     //~~~~~~~~~~~~~~~~~~~~DATA MANIPULATION(should be moved into MODEL)~~~~~~~~~~~~~~~~~~~
@@ -242,6 +244,8 @@ public class Controller {
         g.getBackToMain().addActionListener(e -> {
             CardLayout cl = (CardLayout)(g.getCards().getLayout());
             cl.show(g.getCards(), "MAIN");
+        	String backButton = "Back.wav";
+        	GUI.SoundEffects(backButton);
         });
 
         //auto button
