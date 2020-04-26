@@ -276,7 +276,7 @@ public class GUI {
 
 		//^^^^^^for loop to run though placing logos and monthly prices in the grid bag2 ^^^^
 		for (int x = 0; x < 3; x++) {
-			// normal image import ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
+			// normal image import //ImageIcon bank1logo = new ImageIcon("images/bank" + (x + 1) + ".png");
 			ImageIcon bank1logo = new ImageIcon(cl.getResource("images/bank" + (x + 1) + ".png"));
 			banks[x] = new JLabel();
 			banks[x].setIcon(bank1logo);

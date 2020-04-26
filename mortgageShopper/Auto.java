@@ -47,7 +47,7 @@ public class Auto extends mortgageShopper.Loan {
 		return bankName;
 	}
 
-	// override calculateMonthy method
+	// override calculateMonthly method
 	// (princ-down)*(interest/100)
 	// 			+princ-down
 	// 				/length

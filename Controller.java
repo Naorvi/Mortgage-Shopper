@@ -1,7 +1,6 @@
 import mortgageShopper.Auto;
 import mortgageShopper.Business;
 import mortgageShopper.Mortgage;
-
 import java.awt.*;
 import java.io.IOException;
 import java.text.DecimalFormat;

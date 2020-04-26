@@ -7,5 +7,6 @@ class MortgageShopper {
                 BankSQL.readBanksSQL();
                 //System.out.println(BankSQL.getList().toString());
                 c.getInterestRatesFromSQL();
+                //BankSQL.insertBank("test",423.2020);
         }
 }
