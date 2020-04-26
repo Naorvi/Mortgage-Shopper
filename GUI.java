@@ -48,7 +48,7 @@ public class GUI {
 	private ClearJRadioButton year5 = new ClearJRadioButton("5 Years");
 
 	//declaring and initializing submit button and error messages for main page of gui
-	private ClearJButton submitButton = new ClearJButton("Submit");
+	private ClearJButton submitButton = new ClearJButton("SUBMIT");
 	private ClearJLabel errorText = new ClearJLabel("");
 
 	//declaring and initializing button groups for each type of loan
@@ -347,6 +347,27 @@ public class GUI {
 
 	}
 	
+	// method to play action sound effects
+	public static void SoundEffects(String musicLocation) {
+
+		try {
+			File musicPath = new File(musicLocation);
+
+			if (musicPath.exists()) {
+				AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInput);
+				clip.start();
+				
+			}else {
+				System.out.println("Can't find file");
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+	}
 	//these are the getter methods so the controller class can access the GUI elements
 
 	public JSlider getCredit(){return credit;}
@@ -365,7 +386,7 @@ public class GUI {
 		return cards;
 	}
 
-	public JButton getBackToMain() { return backToMain; }
+	public JButton getBackToMain() { return backToMain;	}
 
 	public JButton getAutoButton() { return autoButton; }
 
